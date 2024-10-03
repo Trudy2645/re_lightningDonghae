@@ -11,31 +11,31 @@ struct TourlistSpot: Identifiable {
     let nearestSubway: String
     let description: String
     let imageURL: String  // 사진 URL 추가
-//    let category: String
+    //    let category: String
 }
 struct TourlistView: View {
     @State private var searchText = ""  // 검색어 저장하는 상태 변수
-       
-       var body: some View {
-           NavigationView {
-               List(filteredTouristSpots) { spot in
-                   TouristSpotCard(spot: spot)  // 각 관광지 정보를 카드 형식으로 표현
-               }
-               .searchable(text: $searchText, prompt: "관광지를 검색하세요")  // 서치바 추가
-               .navigationTitle("검색결과")
-           }
-       }
-       
-       // 검색어를 기준으로 필터링된 관광지 리스트 반환
-       var filteredTouristSpots: [TourlistSpot] {
-           if searchText.isEmpty {
-               return touristSpots
-           } else {
-               return touristSpots.filter { spot in
-                   spot.name.contains(searchText) || spot.address.contains(searchText)
-               }
-           }
-       }
+    
+    var body: some View {
+        NavigationView {
+            List(filteredTouristSpots) { spot in
+                TouristSpotCard(spot: spot)  // 각 관광지 정보를 카드 형식으로 표현
+            }
+            .searchable(text: $searchText, prompt: "관광지를 검색하세요")  // 서치바 추가
+            .navigationTitle("검색결과")
+        }
+    }
+    
+    // 검색어를 기준으로 필터링된 관광지 리스트 반환
+    var filteredTouristSpots: [TourlistSpot] {
+        if searchText.isEmpty {
+            return touristSpots
+        } else {
+            return touristSpots.filter { spot in
+                spot.name.contains(searchText) || spot.address.contains(searchText)
+            }
+        }
+    }
 }
 
 struct TouristSpotCard: View {
@@ -70,7 +70,7 @@ struct TouristSpotCard: View {
                         Text(spot.name)
                             .font(.headline)
                             .fontWeight(.bold)
-//                        Text()
+                        //                        Text()
                     }
                     Text(spot.address)
                         .font(.subheadline)
@@ -103,12 +103,12 @@ struct TouristSpotCard: View {
                 .padding(.horizontal)  // 버튼의 양쪽 여백
                 .padding(.bottom, 10)
             }
-           
-          
+            
+            
         }
-//        .background(Color.white)
-//        .cornerRadius(10)
-
+        //        .background(Color.white)
+        //        .cornerRadius(10)
+        
         .padding()
     }
 }
