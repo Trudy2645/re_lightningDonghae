@@ -20,7 +20,7 @@ struct TabBarView: View {
                     Image(systemName: "tram.fill")
                     Text("동해선 노선표")
                 }
-            MyPageView() // 세 번째 탭: 마이페이지
+            SelectLocationsView() // 세 번째 탭: 마이페이지
                 .tabItem {
                     Image(systemName: "person")
                     Text("마이페이지")
