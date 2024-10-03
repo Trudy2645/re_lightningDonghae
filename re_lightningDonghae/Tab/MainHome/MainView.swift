@@ -60,7 +60,7 @@ struct MainView: View {
                             
                         } //: HSTACK
                     } //: ZSTACK
-
+                    
                 })
                 Spacer()
                     .frame(height: 12)
@@ -145,27 +145,27 @@ struct MainView: View {
                         .padding(.bottom, 16)
                     Spacer()
                 }
+                .padding(.top, -30)
                 let randomIndices = generateRandomIndices(count: touristSpots.count, numberOfRandomItems: 2)
-                            TodayRecommendedCard(spot: touristSpots[randomIndices[0]])
-                            TodayRecommendedCard(spot: touristSpots[randomIndices[1]])
-//                TodayRecommendedCard(spot: touristSpots[0])
-//                TodayRecommendedCard(spot: touristSpots[1])
+                TodayRecommendedCard(spot: touristSpots[randomIndices[0]])
+                    .padding(.top, -20)
+                TodayRecommendedCard(spot: touristSpots[randomIndices[1]])
+//                    .padding(.bottom, 20)
                 
-                
-                
+//            Spacer()
             } //: VSTACK
         } //: NAVIGATIONSTACK
         .navigationBarBackButtonHidden()
     }
     // 랜덤 숫자 생성 함수
-        func generateRandomIndices(count: Int, numberOfRandomItems: Int) -> [Int] {
-            var randomIndices: Set<Int> = []
-            while randomIndices.count < numberOfRandomItems {
-                let randomIndex = Int.random(in: 0..<count)
-                randomIndices.insert(randomIndex)
-            }
-            return Array(randomIndices)
+    func generateRandomIndices(count: Int, numberOfRandomItems: Int) -> [Int] {
+        var randomIndices: Set<Int> = []
+        while randomIndices.count < numberOfRandomItems {
+            let randomIndex = Int.random(in: 0..<count)
+            randomIndices.insert(randomIndex)
         }
+        return Array(randomIndices)
+    }
 }
 
 #Preview {
