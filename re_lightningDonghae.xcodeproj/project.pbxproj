@@ -28,6 +28,7 @@
 		61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393A2CAE4B5A0070EBFF /* SearchView.swift */; };
 		61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */; };
 		9D2170622CAE6099005E4CCB /* SubwaySchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */; };
+		9D2170662CAE6D6F005E4CCB /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170652CAE6D62005E4CCB /* AnswerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		61AA393A2CAE4B5A0070EBFF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourlistSpotCard.swift; sourceTree = "<group>"; };
 		9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySchedules.swift; sourceTree = "<group>"; };
+		9D2170652CAE6D62005E4CCB /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		61AA393F2CAE4E820070EBFF /* MainHome */ = {
 			isa = PBXGroup;
 			children = (
+				9D2170652CAE6D62005E4CCB /* AnswerView.swift */,
 				61AA391A2CAE44160070EBFF /* MainView.swift */,
 				61AA39272CAE46FD0070EBFF /* StampMapView.swift */,
 				61AA39362CAE4A3C0070EBFF /* SelectArrivalStation.swift */,
@@ -239,6 +242,7 @@
 			files = (
 				61AA39332CAE497E0070EBFF /* SelectLifeStyleView.swift in Sources */,
 				61AA39212CAE44D90070EBFF /* SubwayMapView.swift in Sources */,
+				9D2170662CAE6D6F005E4CCB /* AnswerView.swift in Sources */,
 				61AA39262CAE45990070EBFF /* MyPageView.swift in Sources */,
 				61AA39352CAE49AA0070EBFF /* AILottiView.swift in Sources */,
 				61AA391F2CAE44760070EBFF /* TabBarView.swift in Sources */,
