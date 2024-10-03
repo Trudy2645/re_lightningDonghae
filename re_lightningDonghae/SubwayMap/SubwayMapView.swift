@@ -5,10 +5,10 @@ struct SubwayMapView: View {
     @State private var isSheetPresented = false
     
     let stations = [
-        ["부전", "거제해맞이", "거제", "부산교대", "동래", "안락"],
-        ["송정", "신해운대", "벡스코", "센텀","재송","부산원동"],
-        ["오시리아", "기장", "일광", "좌천", "월내", "서생"],
-        ["태화강", "개운포", "덕하", "망양", "남창"]
+        ["Bujeon", "Geojehaemaji", "Geoje", "Busan Nat'l Univ. of Edu.", "Dongnae", "Allak"],
+        ["Songjeong", "Sinhaeundae", "BEXCO", "Centum","Jaesong","Busanwondong"],
+        ["OSIRIA", "Gijang", "Ilgwang", "Jwacheon", "Wollae", "Seosaeng"],
+        ["Taehwagang", "Gaeunpo", "Deokha", "Mangyang", "Namchang"]
     ]
     
     

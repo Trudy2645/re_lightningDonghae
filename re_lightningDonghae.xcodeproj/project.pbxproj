@@ -27,6 +27,7 @@
 		61AA39392CAE4B140070EBFF /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39382CAE4B140070EBFF /* StationView.swift */; };
 		61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393A2CAE4B5A0070EBFF /* SearchView.swift */; };
 		61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */; };
+		9D2170622CAE6099005E4CCB /* SubwaySchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		61AA39382CAE4B140070EBFF /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		61AA393A2CAE4B5A0070EBFF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourlistSpotCard.swift; sourceTree = "<group>"; };
+		9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySchedules.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		61AA39222CAE44FC0070EBFF /* SubwayMap */ = {
 			isa = PBXGroup;
 			children = (
+				9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */,
 				61AA39202CAE44D90070EBFF /* SubwayMapView.swift */,
 				61AA39232CAE45230070EBFF /* StationDetailView.swift */,
 			);
@@ -249,6 +252,7 @@
 				61AA390D2CAE41680070EBFF /* re_lightningDonghaeApp.swift in Sources */,
 				61AA392A2CAE472B0070EBFF /* TourlistInfo.swift in Sources */,
 				61AA391D2CAE44310070EBFF /* TodayRecommendedCard.swift in Sources */,
+				9D2170622CAE6099005E4CCB /* SubwaySchedules.swift in Sources */,
 				61AA39242CAE45230070EBFF /* StationDetailView.swift in Sources */,
 				61AA392C2CAE473F0070EBFF /* TourListView.swift in Sources */,
 				61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */,
