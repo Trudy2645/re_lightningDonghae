@@ -30,6 +30,9 @@
 		61AA39452CAE70A80070EBFF /* ResultOfStationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39442CAE70A80070EBFF /* ResultOfStationSelection.swift */; };
 		9D2170622CAE6099005E4CCB /* SubwaySchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */; };
 		9D2170662CAE6D6F005E4CCB /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170652CAE6D62005E4CCB /* AnswerView.swift */; };
+		9D2170692CAE980C005E4CCB /* FindroadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170682CAE97A0005E4CCB /* FindroadView.swift */; };
+		9D21706B2CAE9E1C005E4CCB /* DirectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D21706A2CAE9E01005E4CCB /* DirectionsView.swift */; };
+		9D21706D2CAE9F3D005E4CCB /* locationmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D21706C2CAE9F36005E4CCB /* locationmanager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		61AA39442CAE70A80070EBFF /* ResultOfStationSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfStationSelection.swift; sourceTree = "<group>"; };
 		9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySchedules.swift; sourceTree = "<group>"; };
 		9D2170652CAE6D62005E4CCB /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
+		9D2170682CAE97A0005E4CCB /* FindroadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindroadView.swift; sourceTree = "<group>"; };
+		9D21706A2CAE9E01005E4CCB /* DirectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsView.swift; sourceTree = "<group>"; };
+		9D21706C2CAE9F36005E4CCB /* locationmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationmanager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,8 @@
 		61AA390B2CAE41680070EBFF /* re_lightningDonghae */ = {
 			isa = PBXGroup;
 			children = (
+				9D21706C2CAE9F36005E4CCB /* locationmanager.swift */,
+				9D2170672CAE9794005E4CCB /* Findroad */,
 				61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */,
 				61AA393E2CAE4E580070EBFF /* Tab */,
 				61AA39402CAE4EDD0070EBFF /* Tourlist */,
@@ -155,6 +163,7 @@
 		61AA39402CAE4EDD0070EBFF /* Tourlist */ = {
 			isa = PBXGroup;
 			children = (
+				9D21706A2CAE9E01005E4CCB /* DirectionsView.swift */,
 				61AA392B2CAE473F0070EBFF /* TourListView.swift */,
 				61AA39292CAE472B0070EBFF /* TourlistInfo.swift */,
 				61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */,
@@ -171,6 +180,14 @@
 			);
 			name = "잘 모르겠는거 담아둔곳";
 			path = "잘 모르겠는거 담아둔곳";
+			sourceTree = "<group>";
+		};
+		9D2170672CAE9794005E4CCB /* Findroad */ = {
+			isa = PBXGroup;
+			children = (
+				9D2170682CAE97A0005E4CCB /* FindroadView.swift */,
+			);
+			path = Findroad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,13 +272,16 @@
 				61AA39372CAE4A3C0070EBFF /* SelectArrivalStation.swift in Sources */,
 				61AA39452CAE70A80070EBFF /* ResultOfStationSelection.swift in Sources */,
 				61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */,
+				9D21706D2CAE9F3D005E4CCB /* locationmanager.swift in Sources */,
 				61AA39312CAE481D0070EBFF /* CreateAccountView.swift in Sources */,
+				9D21706B2CAE9E1C005E4CCB /* DirectionsView.swift in Sources */,
 				61AA392F2CAE480A0070EBFF /* LoginView.swift in Sources */,
 				61AA390D2CAE41680070EBFF /* re_lightningDonghaeApp.swift in Sources */,
 				61AA392A2CAE472B0070EBFF /* TourlistInfo.swift in Sources */,
 				61AA391D2CAE44310070EBFF /* TodayRecommendedCard.swift in Sources */,
 				9D2170622CAE6099005E4CCB /* SubwaySchedules.swift in Sources */,
 				61AA39242CAE45230070EBFF /* StationDetailView.swift in Sources */,
+				9D2170692CAE980C005E4CCB /* FindroadView.swift in Sources */,
 				61AA392C2CAE473F0070EBFF /* TourListView.swift in Sources */,
 				61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */,
 			);
@@ -397,9 +417,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = TA9TKWGKS3;
+				DEVELOPMENT_TEAM = UW9295Z57Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = NSLocationWhenInUseUsageDescription;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -426,9 +448,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = TA9TKWGKS3;
+				DEVELOPMENT_TEAM = UW9295Z57Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = NSLocationWhenInUseUsageDescription;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
