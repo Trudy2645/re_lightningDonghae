@@ -2,9 +2,9 @@ import SwiftUI
 
 // 역 리스트
 let stations = [
-    "부전", "거제해맞이", "거제", "부산교대", "동래", "안락", "부산원동",
-    "재송", "센텀", "벡스코", "신해운대", "송정", "오시리아", "기장", "일광",
-    "좌천", "월내", "서생", "남창", "망양", "덕하", "개운포", "태화강"
+    "부전역", "거제해맞이역", "거제역", "부산교대역", "동래역", "안락역", "부산원동역",
+    "재송역", "센텀역", "벡스코역", "신해운대역", "송정역", "오시리아역", "기장역", "일광역",
+    "좌천역", "월내역", "서생역", "남창역", "망양역", "덕하역", "개운포역", "태화강역"
 ]
 
 // 메인 화면: 역 리스트
@@ -28,14 +28,14 @@ struct SelectArrivalStation: View {
                             }
                             Spacer()
                         }
-                        NavigationLink(destination: EmptyView(station: station)) {
+                        NavigationLink(destination: ResultOfStationSelection(station: station)) {
                             HStack {
                                 Circle()
                                     .fill(Color.my4195F9)
                                     .frame(width: 30, height: 30)
                                     .overlay(Text("\(index + 1)").foregroundColor(.white))
                                 
-                                Text("\(station)역")
+                                Text("\(station)")
                                     .font(.system(size: 17))
                                     .padding(.leading, 10)
                                     .foregroundStyle(Color.black)
@@ -55,28 +55,28 @@ struct SelectArrivalStation: View {
     }
 }
 
-// 엠프티 뷰: 선택한 역 이름을 표시
-struct EmptyView: View {
-    var station: String
-    
-    var body: some View {
-        VStack {
-            Text("\(station)역 정보가 없습니다.")
-                .font(.title)
-                .padding()
-            Spacer()
-        }
-        .navigationBarTitle("검색결과", displayMode: .inline)
-        .toolbar(content: {
-            NavigationLink(destination: MainView(), label: {
-                Image(systemName: "house")
-                    .resizable()
-                    .frame(width: 25, height: 20)
-                    .foregroundStyle(Color.my147DFA)
-            })
-        })
-    }
-}
+//// 엠프티 뷰: 선택한 역 이름을 표시
+//struct ResultOfStationSelection: View {
+//    var station: String
+//    
+//    var body: some View {
+//        VStack {
+//            Text("\(station)정보가 없습니다.")
+//                .font(.title)
+//                .padding()
+//            Spacer()
+//        }
+//        .navigationBarTitle("검색결과", displayMode: .inline)
+//        .toolbar(content: {
+//            NavigationLink(destination: MainView(), label: {
+//                Image(systemName: "house")
+//                    .resizable()
+//                    .frame(width: 25, height: 20)
+//                    .foregroundStyle(Color.my147DFA)
+//            })
+//        })
+//    }
+//}
 
 // 두 개의 원을 표시하는 점선 그리기 컴포넌트
 struct DottedLine: View {

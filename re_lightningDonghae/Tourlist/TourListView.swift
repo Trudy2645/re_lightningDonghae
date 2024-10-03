@@ -89,6 +89,15 @@ struct TouristSpotCard: View {
             }
             
             HStack {
+                VStack(alignment: .leading){
+                    Text("댓글 예시")
+                        .foregroundStyle(.black)
+                        .font(.system(size: 13))
+                        .padding(.bottom, 1)
+                    Text("댓글 모두 보기")
+                        .foregroundStyle(.black.opacity(0.5))
+                        .font(.system(size: 15))
+                }
                 Spacer()
                 // 경로 찾기 버튼
                 Button(action: {
