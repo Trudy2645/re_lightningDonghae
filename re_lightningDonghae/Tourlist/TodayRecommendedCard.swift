@@ -50,24 +50,21 @@ struct TodayRecommendedCard: View {
                 .padding(.leading, 10)
                 Spacer()
             }
-            Button(action: {
-                // 경로 찾기 액션 추가
-                print("경로 찾기 버튼 클릭됨")
-            }) {
-                ZStack{
-                    // 다이아몬드 모양의 배경 (모서리에 radius 적용)
-                    RoundedRectangle(cornerRadius: 5) // 원하는 반경을 설정하세요.
-                        .fill(Color.blue) // 배경 색상
-                        .frame(width: 30, height: 30) // 크기 설정
-                        .rotationEffect(Angle(degrees: 45)) // 45도 회전시켜 다이아몬드 모양 만들기
+            
+            NavigationLink(destination: Directions1View(spot: spot)) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.blue)
+                        .frame(width: 30, height: 30)
+                        .rotationEffect(Angle(degrees: 45))
                     
-                    // 화살표 아이콘
                     Image(systemName: "arrow.turn.up.right")
-                        .foregroundColor(.white) // 화살표 색상
-                        .font(.system(size: 17)) // 크기 설정
+                        .foregroundColor(.white)
+                        .font(.system(size: 14))
                         .bold()
                 }
-            }.padding(.top)
+            }
+            .padding(.top)
                 .padding(.leading, 300)
         }
     }

@@ -23,6 +23,19 @@ struct Directions1View: View {
                         }
                     }
                 }
+                // 지도에서 보기 버튼 추가
+                              Button(action: {
+                                  openGoogleMaps()
+                              }) {
+                                  Text("지도에서 보기")
+                                      .font(.headline)
+                                      .foregroundColor(.white)
+                                      .padding()
+                                      .background(Color.blue)
+                                      .cornerRadius(10)
+                              }
+                              .padding(.top)
+                
             } else {
                 Text("경로를 찾을 수 없습니다.")
             }
@@ -75,6 +88,21 @@ struct Directions1View: View {
         }
         task.resume()
     }
+    
+    private func openGoogleMaps() {
+          guard let currentLocation = currentLocation else { return }
+          
+          // Google Maps URL 생성
+          let origin = "\(currentLocation.latitude),\(currentLocation.longitude)"
+          let destination = "\(spot.latitude),\(spot.longitude)"
+          let urlString = "https://www.google.com/maps/dir/?api=1&origin=\(origin)&destination=\(destination)&travelmode=transit"
+          
+          // Safari에서 열기
+          if let url = URL(string: urlString) {
+              UIApplication.shared.open(url)
+          }
+      }
+  
 }
 
 struct DirectionsResponse: Codable {
@@ -103,3 +131,4 @@ struct Step: Codable {
         case instructions = "html_instructions"
     }
 }
+
