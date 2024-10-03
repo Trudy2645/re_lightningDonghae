@@ -11,7 +11,7 @@ import SwiftUI
 struct re_lightningDonghaeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView()
         }
     }
 }

@@ -8,17 +8,49 @@
 
 /* Begin PBXBuildFile section */
 		61AA390D2CAE41680070EBFF /* re_lightningDonghaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */; };
-		61AA390F2CAE41680070EBFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA390E2CAE41680070EBFF /* ContentView.swift */; };
 		61AA39112CAE41690070EBFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA39102CAE41690070EBFF /* Assets.xcassets */; };
 		61AA39142CAE41690070EBFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA39132CAE41690070EBFF /* Preview Assets.xcassets */; };
+		61AA391B2CAE44160070EBFF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA391A2CAE44160070EBFF /* MainView.swift */; };
+		61AA391D2CAE44310070EBFF /* TodayRecommendedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA391C2CAE44310070EBFF /* TodayRecommendedCard.swift */; };
+		61AA391F2CAE44760070EBFF /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA391E2CAE44760070EBFF /* TabBarView.swift */; };
+		61AA39212CAE44D90070EBFF /* SubwayMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39202CAE44D90070EBFF /* SubwayMapView.swift */; };
+		61AA39242CAE45230070EBFF /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39232CAE45230070EBFF /* StationDetailView.swift */; };
+		61AA39262CAE45990070EBFF /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39252CAE45990070EBFF /* MyPageView.swift */; };
+		61AA39282CAE46FD0070EBFF /* StampMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39272CAE46FD0070EBFF /* StampMapView.swift */; };
+		61AA392A2CAE472B0070EBFF /* TourlistInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39292CAE472B0070EBFF /* TourlistInfo.swift */; };
+		61AA392C2CAE473F0070EBFF /* TourListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA392B2CAE473F0070EBFF /* TourListView.swift */; };
+		61AA392F2CAE480A0070EBFF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA392E2CAE480A0070EBFF /* LoginView.swift */; };
+		61AA39312CAE481D0070EBFF /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39302CAE481D0070EBFF /* CreateAccountView.swift */; };
+		61AA39332CAE497E0070EBFF /* SelectLifeStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39322CAE497E0070EBFF /* SelectLifeStyleView.swift */; };
+		61AA39352CAE49AA0070EBFF /* AILottiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39342CAE49AA0070EBFF /* AILottiView.swift */; };
+		61AA39372CAE4A3C0070EBFF /* SelectArrivalStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39362CAE4A3C0070EBFF /* SelectArrivalStation.swift */; };
+		61AA39392CAE4B140070EBFF /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39382CAE4B140070EBFF /* StationView.swift */; };
+		61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393A2CAE4B5A0070EBFF /* SearchView.swift */; };
+		61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		61AA39092CAE41680070EBFF /* re_lightningDonghae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = re_lightningDonghae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = re_lightningDonghaeApp.swift; sourceTree = "<group>"; };
-		61AA390E2CAE41680070EBFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		61AA39102CAE41690070EBFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61AA39132CAE41690070EBFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		61AA391A2CAE44160070EBFF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		61AA391C2CAE44310070EBFF /* TodayRecommendedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecommendedCard.swift; sourceTree = "<group>"; };
+		61AA391E2CAE44760070EBFF /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		61AA39202CAE44D90070EBFF /* SubwayMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayMapView.swift; sourceTree = "<group>"; };
+		61AA39232CAE45230070EBFF /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
+		61AA39252CAE45990070EBFF /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		61AA39272CAE46FD0070EBFF /* StampMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampMapView.swift; sourceTree = "<group>"; };
+		61AA39292CAE472B0070EBFF /* TourlistInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourlistInfo.swift; sourceTree = "<group>"; };
+		61AA392B2CAE473F0070EBFF /* TourListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourListView.swift; sourceTree = "<group>"; };
+		61AA392E2CAE480A0070EBFF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		61AA39302CAE481D0070EBFF /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		61AA39322CAE497E0070EBFF /* SelectLifeStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLifeStyleView.swift; sourceTree = "<group>"; };
+		61AA39342CAE49AA0070EBFF /* AILottiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AILottiView.swift; sourceTree = "<group>"; };
+		61AA39362CAE4A3C0070EBFF /* SelectArrivalStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectArrivalStation.swift; sourceTree = "<group>"; };
+		61AA39382CAE4B140070EBFF /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
+		61AA393A2CAE4B5A0070EBFF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourlistSpotCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */,
-				61AA390E2CAE41680070EBFF /* ContentView.swift */,
+				61AA393E2CAE4E580070EBFF /* Tab */,
+				61AA39402CAE4EDD0070EBFF /* Tourlist */,
+				61AA39412CAE4F270070EBFF /* 잘 모르겠는거 담아둔곳 */,
+				61AA392D2CAE47FA0070EBFF /* Login */,
+				61AA39222CAE44FC0070EBFF /* SubwayMap */,
 				61AA39102CAE41690070EBFF /* Assets.xcassets */,
 				61AA39122CAE41690070EBFF /* Preview Content */,
 			);
@@ -65,6 +101,67 @@
 				61AA39132CAE41690070EBFF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		61AA39222CAE44FC0070EBFF /* SubwayMap */ = {
+			isa = PBXGroup;
+			children = (
+				61AA39202CAE44D90070EBFF /* SubwayMapView.swift */,
+				61AA39232CAE45230070EBFF /* StationDetailView.swift */,
+			);
+			path = SubwayMap;
+			sourceTree = "<group>";
+		};
+		61AA392D2CAE47FA0070EBFF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				61AA392E2CAE480A0070EBFF /* LoginView.swift */,
+				61AA39302CAE481D0070EBFF /* CreateAccountView.swift */,
+				61AA39342CAE49AA0070EBFF /* AILottiView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		61AA393E2CAE4E580070EBFF /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				61AA39252CAE45990070EBFF /* MyPageView.swift */,
+				61AA391E2CAE44760070EBFF /* TabBarView.swift */,
+				61AA393F2CAE4E820070EBFF /* MainHome */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		61AA393F2CAE4E820070EBFF /* MainHome */ = {
+			isa = PBXGroup;
+			children = (
+				61AA391A2CAE44160070EBFF /* MainView.swift */,
+				61AA39272CAE46FD0070EBFF /* StampMapView.swift */,
+				61AA39362CAE4A3C0070EBFF /* SelectArrivalStation.swift */,
+				61AA39322CAE497E0070EBFF /* SelectLifeStyleView.swift */,
+			);
+			path = MainHome;
+			sourceTree = "<group>";
+		};
+		61AA39402CAE4EDD0070EBFF /* Tourlist */ = {
+			isa = PBXGroup;
+			children = (
+				61AA392B2CAE473F0070EBFF /* TourListView.swift */,
+				61AA39292CAE472B0070EBFF /* TourlistInfo.swift */,
+				61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */,
+				61AA391C2CAE44310070EBFF /* TodayRecommendedCard.swift */,
+			);
+			path = Tourlist;
+			sourceTree = "<group>";
+		};
+		61AA39412CAE4F270070EBFF /* 잘 모르겠는거 담아둔곳 */ = {
+			isa = PBXGroup;
+			children = (
+				61AA393A2CAE4B5A0070EBFF /* SearchView.swift */,
+				61AA39382CAE4B140070EBFF /* StationView.swift */,
+			);
+			name = "잘 모르겠는거 담아둔곳";
+			path = "잘 모르겠는거 담아둔곳";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +234,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61AA390F2CAE41680070EBFF /* ContentView.swift in Sources */,
+				61AA39332CAE497E0070EBFF /* SelectLifeStyleView.swift in Sources */,
+				61AA39212CAE44D90070EBFF /* SubwayMapView.swift in Sources */,
+				61AA39262CAE45990070EBFF /* MyPageView.swift in Sources */,
+				61AA39352CAE49AA0070EBFF /* AILottiView.swift in Sources */,
+				61AA391F2CAE44760070EBFF /* TabBarView.swift in Sources */,
+				61AA39282CAE46FD0070EBFF /* StampMapView.swift in Sources */,
+				61AA39392CAE4B140070EBFF /* StationView.swift in Sources */,
+				61AA391B2CAE44160070EBFF /* MainView.swift in Sources */,
+				61AA39372CAE4A3C0070EBFF /* SelectArrivalStation.swift in Sources */,
+				61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */,
+				61AA39312CAE481D0070EBFF /* CreateAccountView.swift in Sources */,
+				61AA392F2CAE480A0070EBFF /* LoginView.swift in Sources */,
 				61AA390D2CAE41680070EBFF /* re_lightningDonghaeApp.swift in Sources */,
+				61AA392A2CAE472B0070EBFF /* TourlistInfo.swift in Sources */,
+				61AA391D2CAE44310070EBFF /* TodayRecommendedCard.swift in Sources */,
+				61AA39242CAE45230070EBFF /* StationDetailView.swift in Sources */,
+				61AA392C2CAE473F0070EBFF /* TourListView.swift in Sources */,
+				61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
