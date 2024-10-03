@@ -12,6 +12,15 @@ struct TourlistSpot: Identifiable {
     let description: String
     let imageURL: String  // 사진 URL 추가
     //    let category: String
+    // 주소에서 두 번째 공백 이전까지만 가져오는 계산 프로퍼티
+        var truncatedAddress: String {
+            let components = address.split(separator: " ") // 공백을 기준으로 나누기
+            if components.count > 2 {
+                return components[0...1].joined(separator: " ") // 첫 두 단어만 합치기
+            } else {
+                return address // 공백이 2개 미만일 때는 전체 주소 반환
+            }
+        }
 }
 struct TourlistView: View {
     @State private var searchText = ""  // 검색어 저장하는 상태 변수

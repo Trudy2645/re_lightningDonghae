@@ -19,27 +19,33 @@ struct TodayRecommendedCard: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 50, height: 50)
+                        .frame(width: 100, height: 100)
                         .cornerRadius(8)
                 } placeholder: {
                     ProgressView()
-                        .frame(width: 50, height: 50)
-                }
+                        .frame(width: 100, height: 100)
+                }.padding(.leading, 20)
                 
                 VStack(alignment: .leading) {
-                    HStack{
-                        Text(spot.name)
-                            .font(.headline)
-                            .fontWeight(.bold)
-                        Text(spot.nearestSubway)
-                    }
-                    Text(spot.address)
+                    Text(spot.nearestSubway)
+                        .font(.caption)
+                        .foregroundColor(.blue)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(Color.blue.opacity(0.1))
+                        .cornerRadius(10)
+                    Text(spot.name)
+                        .font(.headline)
+                        .fontWeight(.bold)
+                    
+                    Text(spot.truncatedAddress)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                 }
-                .padding(.leading, 5)
+                .padding(.leading, 10)
+                Spacer()
             }
             Button(action: {
                 // 경로 찾기 액션 추가
@@ -47,19 +53,19 @@ struct TodayRecommendedCard: View {
             }) {
                 ZStack{
                     // 다이아몬드 모양의 배경 (모서리에 radius 적용)
-                    RoundedRectangle(cornerRadius: 3) // 원하는 반경을 설정하세요.
+                    RoundedRectangle(cornerRadius: 5) // 원하는 반경을 설정하세요.
                         .fill(Color.blue) // 배경 색상
-                        .frame(width: 25, height: 25) // 크기 설정
+                        .frame(width: 30, height: 30) // 크기 설정
                         .rotationEffect(Angle(degrees: 45)) // 45도 회전시켜 다이아몬드 모양 만들기
                     
                     // 화살표 아이콘
                     Image(systemName: "arrow.turn.up.right")
                         .foregroundColor(.white) // 화살표 색상
-                        .font(.system(size: 14)) // 크기 설정
+                        .font(.system(size: 17)) // 크기 설정
                         .bold()
                 }
-            }.padding(.top, 60)
-                .padding(.leading, 280)
+            }.padding(.top)
+                .padding(.leading, 300)
         }
     }
 }
