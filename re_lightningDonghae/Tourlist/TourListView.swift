@@ -49,7 +49,7 @@ struct TourlistView: View {
 
 struct TouristSpotCard: View {
     let spot: TourlistSpot
-    
+    @State var isPresented: Bool = false
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {  // 전체 카드 구조
             HStack(spacing: 10) {  // 사진과 텍스트를 나란히 배치
@@ -89,6 +89,22 @@ struct TouristSpotCard: View {
             }
             
             HStack {
+                VStack(alignment: .leading){
+                    Text("댓글 예시")
+                        .foregroundStyle(.black)
+                        .font(.system(size: 13))
+                    Button(action: {
+                        print("dd")
+                        isPresented = true
+                    }, label: {
+                        Text("댓글 모두보기")
+                            .foregroundStyle(.black.opacity(0.5))
+                            .font(.system(size: 15))
+                    })
+                    .sheet(isPresented: $isPresented) {
+                        EmptyView()
+                    }
+                }
                 Spacer()
                 // 경로 찾기 버튼
                 Button(action: {
