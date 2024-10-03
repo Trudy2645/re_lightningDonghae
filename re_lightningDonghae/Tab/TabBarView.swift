@@ -25,6 +25,11 @@ struct TabBarView: View {
                     Image(systemName: "person")
                     Text("마이페이지")
                 }
+            StampView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("마이페이지")
+                }
         }
     }
 }

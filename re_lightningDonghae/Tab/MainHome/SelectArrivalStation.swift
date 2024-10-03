@@ -55,29 +55,6 @@ struct SelectArrivalStation: View {
     }
 }
 
-//// 엠프티 뷰: 선택한 역 이름을 표시
-//struct ResultOfStationSelection: View {
-//    var station: String
-//    
-//    var body: some View {
-//        VStack {
-//            Text("\(station)정보가 없습니다.")
-//                .font(.title)
-//                .padding()
-//            Spacer()
-//        }
-//        .navigationBarTitle("검색결과", displayMode: .inline)
-//        .toolbar(content: {
-//            NavigationLink(destination: MainView(), label: {
-//                Image(systemName: "house")
-//                    .resizable()
-//                    .frame(width: 25, height: 20)
-//                    .foregroundStyle(Color.my147DFA)
-//            })
-//        })
-//    }
-//}
-
 // 두 개의 원을 표시하는 점선 그리기 컴포넌트
 struct DottedLine: View {
     var body: some View {
