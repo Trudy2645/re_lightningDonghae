@@ -28,6 +28,7 @@
 		61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393A2CAE4B5A0070EBFF /* SearchView.swift */; };
 		61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */; };
 		61AA39452CAE70A80070EBFF /* ResultOfStationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39442CAE70A80070EBFF /* ResultOfStationSelection.swift */; };
+		61AA39632CAE9EF20070EBFF /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39622CAE9EF20070EBFF /* StampView.swift */; };
 		9D2170622CAE6099005E4CCB /* SubwaySchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		61AA393A2CAE4B5A0070EBFF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourlistSpotCard.swift; sourceTree = "<group>"; };
 		61AA39442CAE70A80070EBFF /* ResultOfStationSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfStationSelection.swift; sourceTree = "<group>"; };
+		61AA39622CAE9EF20070EBFF /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
+		61AA39642CAEA0800070EBFF /* re-lightningDonghae-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "re-lightningDonghae-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySchedules.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +90,7 @@
 		61AA390B2CAE41680070EBFF /* re_lightningDonghae */ = {
 			isa = PBXGroup;
 			children = (
+				61AA39642CAEA0800070EBFF /* re-lightningDonghae-Info.plist */,
 				61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */,
 				61AA393E2CAE4E580070EBFF /* Tab */,
 				61AA39402CAE4EDD0070EBFF /* Tourlist */,
@@ -142,6 +146,7 @@
 			children = (
 				61AA391A2CAE44160070EBFF /* MainView.swift */,
 				61AA39272CAE46FD0070EBFF /* StampMapView.swift */,
+				61AA39622CAE9EF20070EBFF /* StampView.swift */,
 				61AA39362CAE4A3C0070EBFF /* SelectArrivalStation.swift */,
 				61AA39322CAE497E0070EBFF /* SelectLifeStyleView.swift */,
 				61AA39442CAE70A80070EBFF /* ResultOfStationSelection.swift */,
@@ -245,6 +250,7 @@
 				61AA39262CAE45990070EBFF /* MyPageView.swift in Sources */,
 				61AA39352CAE49AA0070EBFF /* AILottiView.swift in Sources */,
 				61AA391F2CAE44760070EBFF /* TabBarView.swift in Sources */,
+				61AA39632CAE9EF20070EBFF /* StampView.swift in Sources */,
 				61AA39282CAE46FD0070EBFF /* StampMapView.swift in Sources */,
 				61AA39392CAE4B140070EBFF /* StationView.swift in Sources */,
 				61AA391B2CAE44160070EBFF /* MainView.swift in Sources */,
@@ -396,6 +402,7 @@
 				DEVELOPMENT_TEAM = TA9TKWGKS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -425,6 +432,7 @@
 				DEVELOPMENT_TEAM = TA9TKWGKS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

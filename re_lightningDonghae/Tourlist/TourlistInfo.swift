@@ -8,7 +8,7 @@
 import Foundation
 // 샘플 관광지 데이터를 배열로 생성
 let touristSpots = [
-
+    TourlistSpot(name: "스타벅스 이동점어쩌구", latitude: 36.0355086, longitude: 129.3330326, address: "경북 포항시 남구 희망대로 353", nearestSubway: "부전역", description: "그냥 테스트용", imageURL: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211126_46%2F16379232577228BFYO_JPEG%2Fbatch_%25B3%25AA%25BF%25EC_%25BF%25F4%25C0%25BD.jpeg"),
     TourlistSpot(
         name: "웨이브락 클라이밍 서면점",
         latitude: 35.1586847,
