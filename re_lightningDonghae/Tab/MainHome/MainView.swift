@@ -1,9 +1,3 @@
-//  MainView.swift
-//  DiveIn2024Test
-//
-//  Created by Cho YeonJi on 9/29/24.
-//
-
 import SwiftUI
 import FirebaseAuth
 
@@ -11,6 +5,7 @@ struct MainView: View {
     @State private var isLifeStyleSelected = false
     @State private var isSubwayStationSelected = false
     @State private var isUserLoggedIn = Auth.auth().currentUser != nil
+    @State private var showLogoutAlert = false // 로그아웃 경고창 표시 여부
     
     var body: some View {
         NavigationStack {
@@ -36,7 +31,7 @@ struct MainView: View {
                     // 로그인 상태에 따라 다른 버튼 표시
                     if isUserLoggedIn {
                         Button(action: {
-                            logOut() // 로그아웃 기능 실행
+                            showLogoutAlert = true // 로그아웃 경고창 띄우기
                         }, label: {
                             Text("로그아웃")
                                 .foregroundStyle(Color.black)
@@ -167,6 +162,16 @@ struct MainView: View {
                 
             } //: VSTACK
         } //: NAVIGATIONSTACK
+        .alert(isPresented: $showLogoutAlert) {
+            Alert(
+                title: Text("로그아웃"),
+                message: Text("정말 로그아웃 하시겠습니까?"),
+                primaryButton: .destructive(Text("확인"), action: {
+                    logOut() // 로그아웃 실행
+                }),
+                secondaryButton: .cancel(Text("취소"))
+            )
+        }
         .navigationBarBackButtonHidden()
     }
     
