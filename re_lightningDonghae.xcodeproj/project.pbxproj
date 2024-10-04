@@ -61,6 +61,9 @@
 		9D2170A12CAEC484005E4CCB /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 9D2170A02CAEC484005E4CCB /* FirebaseStorageCombine-Community */; };
 		9D2170A32CAEC484005E4CCB /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 9D2170A22CAEC484005E4CCB /* FirebaseVertexAI-Preview */; };
 		9D2170A72CAEDFA3005E4CCB /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170A62CAEDF98005E4CCB /* SignupView.swift */; };
+		9D9F1CD02CB038F9008DFA0C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CCF2CB038EB008DFA0C /* Popup.swift */; };
+		9D9F1CD22CB03927008DFA0C /* Visited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD12CB03915008DFA0C /* Visited.swift */; };
+		9D9F1CD42CB03975008DFA0C /* Corelocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +102,9 @@
 		9D2170A42CAEC555005E4CCB /* re_lightningDonghaeRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = re_lightningDonghaeRelease.entitlements; sourceTree = "<group>"; };
 		9D2170A62CAEDF98005E4CCB /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		9D2170A82CAEF02F005E4CCB /* re_lightningDonghae.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = re_lightningDonghae.entitlements; sourceTree = "<group>"; };
+		9D9F1CCF2CB038EB008DFA0C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
+		9D9F1CD12CB03915008DFA0C /* Visited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visited.swift; sourceTree = "<group>"; };
+		9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corelocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,7 @@
 		61AA393F2CAE4E820070EBFF /* MainHome */ = {
 			isa = PBXGroup;
 			children = (
+				9D9F1CCE2CB038B3008DFA0C /* Stampfunction */,
 				9D2170652CAE6D62005E4CCB /* AnswerView.swift */,
 				61AA391A2CAE44160070EBFF /* MainView.swift */,
 				61AA39272CAE46FD0070EBFF /* StampMapView.swift */,
@@ -272,6 +279,16 @@
 				9D2170A62CAEDF98005E4CCB /* SignupView.swift */,
 			);
 			path = user;
+			sourceTree = "<group>";
+		};
+		9D9F1CCE2CB038B3008DFA0C /* Stampfunction */ = {
+			isa = PBXGroup;
+			children = (
+				9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */,
+				9D9F1CD12CB03915008DFA0C /* Visited.swift */,
+				9D9F1CCF2CB038EB008DFA0C /* Popup.swift */,
+			);
+			path = Stampfunction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,8 +370,10 @@
 				9D2170662CAE6D6F005E4CCB /* AnswerView.swift in Sources */,
 				61AA39262CAE45990070EBFF /* MyPageView.swift in Sources */,
 				61AA39682CAEB7B60070EBFF /* UserDefaults.swift in Sources */,
+				9D9F1CD42CB03975008DFA0C /* Corelocation.swift in Sources */,
 				61AA39352CAE49AA0070EBFF /* AILottiView.swift in Sources */,
 				61AA391F2CAE44760070EBFF /* TabBarView.swift in Sources */,
+				9D9F1CD22CB03927008DFA0C /* Visited.swift in Sources */,
 				61AA39632CAE9EF20070EBFF /* StampView.swift in Sources */,
 				61AA39282CAE46FD0070EBFF /* StampMapView.swift in Sources */,
 				61AA39392CAE4B140070EBFF /* StationView.swift in Sources */,
@@ -362,6 +381,7 @@
 				61AA39372CAE4A3C0070EBFF /* SelectArrivalStation.swift in Sources */,
 				61AA39452CAE70A80070EBFF /* ResultOfStationSelection.swift in Sources */,
 				61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */,
+				9D9F1CD02CB038F9008DFA0C /* Popup.swift in Sources */,
 				9D21706D2CAE9F3D005E4CCB /* locationmanager.swift in Sources */,
 				61AA39312CAE481D0070EBFF /* CreateAccountView.swift in Sources */,
 				9D21706B2CAE9E1C005E4CCB /* DirectionsView.swift in Sources */,
@@ -509,7 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = TA9TKWGKS3;
+				DEVELOPMENT_TEAM = UW9295Z57Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
@@ -541,12 +561,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = re_lightningDonghae/re_lightningDonghae.entitlements;
 				CODE_SIGN_ENTITLEMENTS = re_lightningDonghae/re_lightningDonghaeRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = TA9TKWGKS3;
+				DEVELOPMENT_TEAM = UW9295Z57Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
