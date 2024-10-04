@@ -15,7 +15,7 @@ struct ResultOfStationSelection: View {
     var station: String
 
     // 선택한 역과 일치하는 관광지 필터링
-    var filteredTouristSpots: [TourlistSpot] {
+    var filteredTouristSpots: [TouristSpot] {
         return touristSpots.filter { spot in
             spot.nearestSubway == station
         }
