@@ -10,7 +10,7 @@ struct TouristSpot: Identifiable {
     let address: String
     let nearestSubway: String
     let description: String
-    let imageURL: String  // 사진 URL 추가
+    var imageURL: String  // 사진 URL 추가
     //    let category: String
     // 주소에서 두 번째 공백 이전까지만 가져오는 계산 프로퍼티
         var truncatedAddress: String {

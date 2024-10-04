@@ -114,7 +114,7 @@ struct Route: Codable {
 }
 
 struct Leg: Codable, Identifiable { // Identifiable 프로토콜을 준수
-    let id = UUID() // 각 Leg에 대한 고유 ID
+    var id = UUID() // 각 Leg에 대한 고유 ID
     let distance: TextValue
     let duration: TextValue
     let steps: [Step]

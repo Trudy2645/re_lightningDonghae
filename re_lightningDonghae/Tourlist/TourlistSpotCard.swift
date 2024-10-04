@@ -3,6 +3,7 @@ import CoreLocation
 import FirebaseAuth
 import FirebaseFirestore
 
+
 // 관광지 정보를 담을 구조체
 //struct TouristSpot: Identifiable {
 //    let id: UUID = UUID()  // 각 관광지 정보의 고유 ID
@@ -14,8 +15,6 @@ import FirebaseFirestore
 //    let description: String
 //    let imageURL: String  // 사진 URL 추가
 //}
-//
-
 
 struct TouristSpotCard: View {
     let spot: TouristSpot
@@ -37,7 +36,7 @@ struct TouristSpotCard: View {
                     ProgressView()
                         .frame(width: 90, height: 90)
                 }
-
+                
                 VStack(alignment: .leading, spacing: 5) {
                     Text(spot.nearestSubway)
                         .font(.caption)
@@ -46,7 +45,7 @@ struct TouristSpotCard: View {
                         .padding(.vertical, 5)
                         .background(Color.blue.opacity(0.1))
                         .cornerRadius(10)
-
+                    
                     Text(spot.name)
                         .font(.headline)
                         .fontWeight(.bold)
@@ -55,6 +54,7 @@ struct TouristSpotCard: View {
                         .foregroundColor(.secondary)
                 }
             }
+
             HStack {
                 
                 // 경로 찾기 버튼

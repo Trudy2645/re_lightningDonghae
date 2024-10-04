@@ -29,6 +29,7 @@
 		61AA393D2CAE4C590070EBFF /* TourlistSpotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA393C2CAE4C590070EBFF /* TourlistSpotCard.swift */; };
 		61AA39452CAE70A80070EBFF /* ResultOfStationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39442CAE70A80070EBFF /* ResultOfStationSelection.swift */; };
 		61AA39632CAE9EF20070EBFF /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39622CAE9EF20070EBFF /* StampView.swift */; };
+		61AA39682CAEB7B60070EBFF /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA39672CAEB7B60070EBFF /* UserDefaults.swift */; };
 		9D2170622CAE6099005E4CCB /* SubwaySchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */; };
 		9D2170662CAE6D6F005E4CCB /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170652CAE6D62005E4CCB /* AnswerView.swift */; };
 		9D2170692CAE980C005E4CCB /* FindroadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2170682CAE97A0005E4CCB /* FindroadView.swift */; };
@@ -87,6 +88,8 @@
 		61AA39442CAE70A80070EBFF /* ResultOfStationSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOfStationSelection.swift; sourceTree = "<group>"; };
 		61AA39622CAE9EF20070EBFF /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
 		61AA39642CAEA0800070EBFF /* re-lightningDonghae-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "re-lightningDonghae-Info.plist"; sourceTree = SOURCE_ROOT; };
+		61AA39672CAEB7B60070EBFF /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		61AA39692CAEE80D0070EBFF /* re_lightningDonghae.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = re_lightningDonghae.entitlements; sourceTree = "<group>"; };
 		9D2170612CAE6087005E4CCB /* SubwaySchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySchedules.swift; sourceTree = "<group>"; };
 		9D2170652CAE6D62005E4CCB /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 		9D2170682CAE97A0005E4CCB /* FindroadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindroadView.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		61AA390B2CAE41680070EBFF /* re_lightningDonghae */ = {
 			isa = PBXGroup;
 			children = (
+				61AA39692CAEE80D0070EBFF /* re_lightningDonghae.entitlements */,
 				9D2170A82CAEF02F005E4CCB /* re_lightningDonghae.entitlements */,
 				9D2170A52CAEDF90005E4CCB /* user */,
 				9D2170A42CAEC555005E4CCB /* re_lightningDonghaeRelease.entitlements */,
@@ -216,6 +220,7 @@
 				9D2170652CAE6D62005E4CCB /* AnswerView.swift */,
 				61AA391A2CAE44160070EBFF /* MainView.swift */,
 				61AA39272CAE46FD0070EBFF /* StampMapView.swift */,
+				61AA39672CAEB7B60070EBFF /* UserDefaults.swift */,
 				61AA39622CAE9EF20070EBFF /* StampView.swift */,
 				61AA39362CAE4A3C0070EBFF /* SelectArrivalStation.swift */,
 				61AA39322CAE497E0070EBFF /* SelectLifeStyleView.swift */,
@@ -347,6 +352,7 @@
 				61AA39212CAE44D90070EBFF /* SubwayMapView.swift in Sources */,
 				9D2170662CAE6D6F005E4CCB /* AnswerView.swift in Sources */,
 				61AA39262CAE45990070EBFF /* MyPageView.swift in Sources */,
+				61AA39682CAEB7B60070EBFF /* UserDefaults.swift in Sources */,
 				61AA39352CAE49AA0070EBFF /* AILottiView.swift in Sources */,
 				61AA391F2CAE44760070EBFF /* TabBarView.swift in Sources */,
 				61AA39632CAE9EF20070EBFF /* StampView.swift in Sources */,
@@ -503,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = UW9295Z57Q;
+				DEVELOPMENT_TEAM = TA9TKWGKS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
@@ -535,11 +541,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = re_lightningDonghae/re_lightningDonghae.entitlements;
 				CODE_SIGN_ENTITLEMENTS = re_lightningDonghae/re_lightningDonghaeRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = UW9295Z57Q;
+				DEVELOPMENT_TEAM = TA9TKWGKS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
