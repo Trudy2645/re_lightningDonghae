@@ -68,15 +68,22 @@ struct TouristSpotCard: View {
             // 경로 찾기와 댓글 달기 버튼
             HStack {
                 // 경로 찾기 버튼
-                NavigationLink(destination: Directions1View(spot: spot)) {
-                    Text("경로 찾기")
-                }
-                Spacer()
                 
                 // 댓글 달기 버튼
-                Button("댓글") {
+                Button("댓글 모두 보기") {
                     showingCommentSheet = true
                 }
+                Spacer()
+                Text("경로 찾기")
+                    .foregroundStyle(Color.black)
+                NavigationLink(destination: Directions1View(spot: spot)) {
+                    Image(systemName: "arrow.up.forward.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundStyle(Color.blue)
+                }
+                
+                
             }
             .sheet(isPresented: $showingCommentSheet) {
                 CommentInputSheet(spot: spot, userName: userName, comments: $comments)
