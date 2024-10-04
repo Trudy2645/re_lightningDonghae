@@ -4,7 +4,6 @@
 //
 //  Created by 문재윤 on 10/4/24.
 //
-
 import SwiftUI
 
 struct StampPopupView: View {
@@ -16,8 +15,21 @@ struct StampPopupView: View {
             Text("스탬프 찍기")
                 .font(.headline)
             
+            // 관광지 이미지 표시
+            AsyncImage(url: URL(string: spot.imageURL)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200) // 이미지 크기 조정
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+            } placeholder: {
+                ProgressView() // 이미지를 로드하는 동안 표시할 로딩 표시
+            }
+
             Text("\(spot.name)에 방문 완료하셨나요?")
                 .multilineTextAlignment(.center)
+                .padding()
 
             HStack {
                 Button("확인") {
