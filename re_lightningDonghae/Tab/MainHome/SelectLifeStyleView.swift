@@ -216,7 +216,7 @@ struct SelectLifeStyleView: View {
     }
     
     private func fetchAIResponse(prompt: String) {
-        guard let url = URL(string: "http://localhost:8000/api/query/") else { return }
+        guard let url = URL(string: "http://34.22.84.70:8000/api/query/") else { return }
         
         let request = AIRequest(prompt: prompt)
         
