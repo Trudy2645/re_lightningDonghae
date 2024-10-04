@@ -22,7 +22,7 @@ struct TouristSpotCard: View {
     @State private var showingCommentSheet = false // 댓글 입력 창 표시 여부
     @State private var comments: [Comment] = [] // Firestore에서 불러온 댓글 리스트
     @State private var userName = "" // 사용자의 닉네임
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 10) {
@@ -54,7 +54,7 @@ struct TouristSpotCard: View {
                         .foregroundColor(.secondary)
                 }
             }
-
+            
             HStack {
                 
                 // 경로 찾기 버튼
@@ -77,7 +77,7 @@ struct TouristSpotCard: View {
             fetchUserName()
         }
     }
-
+    
     // Firestore에서 댓글 불러오기
     private func fetchComments() {
         let db = Firestore.firestore()
@@ -114,44 +114,115 @@ struct CommentInputSheet: View {
     let userName: String
     @Binding var comments: [Comment] // 댓글을 업데이트하기 위한 바인딩
     @State private var commentText = ""
+    @StateObject private var keyboard = KeyboardResponder() // 키보드 리스폰더
+    @State private var isKeyboardVisible = false
 
     var body: some View {
-        VStack {
-            Text("댓글 입력")
-                .font(.headline)
-                .padding()
-
-            // 이전 댓글 표시
-            VStack(alignment: .leading) {
-                ForEach(comments) { comment in
-                    Text(comment.text)
-                        .foregroundColor(.black)
-                        .font(.system(size: 13))
-                        .padding(.bottom, 1)
+        ZStack {
+            VStack {
+                Text("댓글")
+                    .bold()
+                    .padding()
+//                    .padding(.top, 20)
+                    .font(.system(size: 15))
+                
+                Rectangle()
+                    .frame(width: 393, height: 1)
+                    .foregroundStyle(Color.myDCDCDC)
+                
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        ForEach(comments) { comment in
+                            HStack {
+                                ZStack {
+                                    Circle()
+                                        .frame(width: 40, height: 40)
+                                        .foregroundStyle(.gray)
+                                    if let firstLetter = userName.first {
+                                        Text(String(firstLetter))
+                                            .font(.system(size: 15))
+                                            .foregroundStyle(Color.black)
+                                    }
+                                }
+                                .padding(.leading, -3)
+                                
+                                VStack(alignment: .leading) {
+                                    Text(userName)
+                                        .foregroundStyle(Color.black)
+                                        .font(.system(size: 13))
+                                        .fontWeight(.semibold)
+                                    
+                                    Text(comment.text)
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 15))
+                                        .padding(.bottom, 1)
+                                }
+                            }
+                        }
+                        .frame(width: 273, height: 32)
+                        .padding(.vertical)
+                        .padding(.trailing, 250)
+                    }
+                    .padding(.bottom, 70)
                 }
             }
-            .padding(.bottom)
-
-            TextField("댓글을 입력하세요...", text: $commentText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            Button(action: {
-                submitComment()
-            }) {
-                Text("댓글 달기")
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+            .padding()
+            .onAppear {
+                fetchComments() // 시트가 올라올 때 댓글을 불러옴
+                // 키보드 이벤트 감지
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
+                    isKeyboardVisible = true
+                }
+                
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                    isKeyboardVisible = false
+                }
             }
-            Spacer()
-        }
-        .padding()
-        .onAppear {
-            fetchComments() // 시트가 올라올 때 댓글을 불러옴
+            
+            VStack {
+                Spacer()
+                
+                HStack(alignment: .center, spacing: 10) {
+                    ZStack {
+                        Circle()
+                            .frame(width: 40, height: 40)
+                            .foregroundStyle(.gray)
+                        if let firstLetter = userName.first {
+                            Text(String(firstLetter))
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color.black)
+                        }
+                    }
+                    
+                    TextField("   댓글을 입력하세요...", text: $commentText)
+                        .frame(width: 273, height: 32)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        .padding(.vertical)
+                    
+                    Button(action: {
+                        submitComment()
+                    }) {
+                        Image(systemName: "arrowshape.up.circle.fill")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.blue)
+                    }
+                }
+                .frame(width: 393, height: 70)
+                .background(Color.white)
+                .overlay(
+                    Rectangle()
+                        .stroke(Color.gray, lineWidth: 0.3)
+                )
+                .offset(y: isKeyboardVisible ? -30 : 0) // 키보드가 나타나면 위로 이동
+            }
+            .padding(.bottom, -30)
         }
     }
+
     
     // Firestore에서 댓글 가져오기
     private func fetchComments() {
@@ -175,12 +246,12 @@ struct CommentInputSheet: View {
                 let text = data["text"] as? String ?? ""
                 let userName = data["userName"] as? String ?? ""
                 let timestamp = (data["timestamp"] as? Timestamp)?.dateValue() ?? Date()
-
+                
                 return Comment(id: id, text: text, userName: userName, timestamp: timestamp)
             }
         }
     }
-
+    
     // Firestore에 댓글 저장하기
     private func submitComment() {
         guard !commentText.isEmpty else { return }
@@ -208,4 +279,31 @@ struct Comment: Identifiable, Codable {
     var text: String
     var userName: String
     var timestamp: Date
+}
+
+import Combine
+
+class KeyboardResponder: ObservableObject {
+    @Published var currentHeight: CGFloat = 0
+    var cancellable: AnyCancellable?
+
+    init() {
+        cancellable = NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
+            .merge(with: NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification))
+            .compactMap { notification in
+                notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
+            }
+            .map { rect in
+                if rect.origin.y >= UIScreen.main.bounds.height {
+                    return 0
+                } else {
+                    return rect.height
+                }
+            }
+            .assign(to: \.currentHeight, on: self)
+    }
+    
+    deinit {
+        cancellable?.cancel()
+    }
 }
