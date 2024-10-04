@@ -32,19 +32,25 @@ struct SubwayMapView: View {
                             }
                         }
                     }
-                   
                 }
-//                .padding()
+                .onAppear {
+                    // 초기 값 설정, 예를 들어 첫 번째 역을 기본으로 선택
+                    if selectedStation == nil {
+                        selectedStation = stations.first?.first // 첫 번째 역을 선택
+                    }
+                }
                 
                 Spacer()
             }
-            .sheet(isPresented: $isSheetPresented) {
+            .sheet(isPresented: Binding(
+                get: { isSheetPresented && selectedStation != nil },
+                set: { isSheetPresented = $0 }
+            )) {
                 if let station = selectedStation {
                     StationDetailView(station: station)
                         .presentationDetents([.height(200)])
                 }
-            }
-        }.preferredColorScheme(.light)
+            }       }.preferredColorScheme(.light)
     }
 }
 
@@ -139,16 +145,21 @@ struct StationButton: View {
     
     var body: some View {
         Button(action: {
+            // 역이 선택되면 먼저 `selectedStation`을 설정
             selectedStation = station
-            isSheetPresented = true
+            
+            // 선택된 역이 있는지 확인한 후 시트를 열기
+            if selectedStation != nil {
+                isSheetPresented = true
+            }
         }) {
             VStack(spacing: 0) {
                 Circle()
-                    .fill(Color.white) // 원의 내부를 하얗게 채움
+                    .fill(Color.white)
                     .frame(width: 16, height: 16)
                     .overlay(
                         Circle()
-                            .stroke(Color.my3356B4, lineWidth: 3) // 파란색 외곽선 추가
+                            .stroke(Color.my3356B4, lineWidth: 3)
                     )
                 
                 Text(station)

@@ -12,6 +12,7 @@ let touristSpots = [
     TouristSpot(name: "c5", latitude: 36.014257, longitude: 129.325708, address: "경북 포항시 남구 지곡로 80", nearestSubway: "부전역", description: "테스트라구요", imageURL: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180501_252%2F152512575528301LW6_JPEG%2FFw7asCrYZKFcaXangDHofBwA.jpg"),
     TouristSpot(name: "커뮤니티 센터", latitude: 36.016762, longitude: 129.322780
 , address: "커뮤니티24센터 경상북도 포항시 남구 효곡동 284", nearestSubway: "부전역", description: "그냥테스튼디", imageURL: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180501_252%2F152512575528301LW6_JPEG%2FFw7asCrYZKFcaXangDHofBwA.jpg"),
+
     TouristSpot(name: "스타벅스 이동점어쩌구", latitude: 36.0355086, longitude: 129.3330326, address: "경북 포항시 남구 희망대로 353", nearestSubway: "부전역", description: "그냥 테스트용", imageURL: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211126_46%2F16379232577228BFYO_JPEG%2Fbatch_%25B3%25AA%25BF%25EC_%25BF%25F4%25C0%25BD.jpeg"),
     TouristSpot(
         name: "웨이브락 클라이밍 서면점",
