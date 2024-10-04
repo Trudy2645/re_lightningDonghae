@@ -2,7 +2,7 @@ import SwiftUI
 import CoreLocation
 
 struct Directions1View: View {
-    let spot: TourlistSpot
+    let spot: TouristSpot
     @State private var directions: DirectionsResponse?
     @State private var apiKey = "AIzaSyDppGeK7XZRzImgjF4olNW7Nmh5HPQ3xRc" // 구글 API 키를 여기에 입력하세요
     @State private var currentLocation: CLLocationCoordinate2D?

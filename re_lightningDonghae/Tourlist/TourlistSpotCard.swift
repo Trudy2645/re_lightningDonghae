@@ -1,29 +1,28 @@
-
 import SwiftUI
 import CoreLocation
+import FirebaseAuth
+import FirebaseFirestore
 
 // 관광지 정보를 담을 구조체
-struct TouristSpot: Identifiable {
-    let id: UUID = UUID()  // 각 관광지 정보의 고유 ID
-    let name: String
-    let latitude: Double
-    let longitude: Double
-    let address: String
-    let nearestSubway: String
-    let description: String
-    let imageURL: String  // 사진 URL 추가
-}
+//struct TouristSpot: Identifiable {
+//    let id: UUID = UUID()  // 각 관광지 정보의 고유 ID
+//    let name: String
+//    let latitude: Double
+//    let longitude: Double
+//    let address: String
+//    let nearestSubway: String
+//    let description: String
+//    let imageURL: String  // 사진 URL 추가
+//}
+//
 
-// 샘플 관광지 데이터를 배열로 생성
-let touristSpotsi = [
-    TouristSpot(name: "경복궁", latitude: 37.579617, longitude: 126.977041, address: "서울특별시 종로구 세종로 1-1", nearestSubway: "경복궁역", description: "조선시대의 궁궐로서 역사적 가치가 높은 유적지입니다.", imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJsPLZoRZuH-0NDKlI_esDNY7LmwSCElb6pQ&s"),
-    TouristSpot(name: "남산서울타워", latitude: 37.551169, longitude: 126.988226, address: "서울특별시 용산구 남산공원길 105", nearestSubway: "명동역", description: "서울을 대표하는 랜드마크로 서울 시내 전경을 한눈에 볼 수 있습니다.", imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Seoul_Tower_%284394893276%29.jpg/550px-Seoul_Tower_%284394893276%29.jpg"),
-    TouristSpot(name: "롯데월드", latitude: 37.511034, longitude: 127.098034, address: "서울특별시 송파구 올림픽로 240", nearestSubway: "잠실역", description: "세계 최대의 실내 놀이공원으로 다양한 즐길거리를 제공합니다.", imageURL: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Khitai7.jpg")
-]
 
 struct TouristSpotCard: View {
-    let spot: TourlistSpot
+    let spot: TouristSpot
     @StateObject private var locationManager = LocationManager() // 현재 위치 관리
+    @State private var showingCommentSheet = false // 댓글 입력 창 표시 여부
+    @State private var comments: [Comment] = [] // Firestore에서 불러온 댓글 리스트
+    @State private var userName = "" // 사용자의 닉네임
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -56,36 +55,157 @@ struct TouristSpotCard: View {
                         .foregroundColor(.secondary)
                 }
             }
-
             HStack {
-                VStack(alignment: .leading) {
-                    Text("댓글 예시")
-                        .foregroundStyle(.black)
-                        .font(.system(size: 13))
-                        .padding(.bottom, 1)
-                    Text("댓글 모두 보기")
-                        .foregroundStyle(.black.opacity(0.5))
-                        .font(.system(size: 15))
-                }
-                Spacer()
+                
                 // 경로 찾기 버튼
                 NavigationLink(destination: Directions1View(spot: spot)) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.blue)
-                            .frame(width: 30, height: 30)
-                            .rotationEffect(Angle(degrees: 45))
-                        
-                        Image(systemName: "arrow.turn.up.right")
-                            .foregroundColor(.white)
-                            .font(.system(size: 14))
-                            .bold()
-                    }
+                    Text("경로 찾기")
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 10)
+                Spacer()
+                // 댓글 달기 버튼
+                Button("댓글") {
+                    showingCommentSheet = true
+                }
+            }
+            .sheet(isPresented: $showingCommentSheet) {
+                CommentInputSheet(spot: spot, userName: userName, comments: $comments)
             }
         }
         .padding()
+        .onAppear {
+            fetchComments()
+            fetchUserName()
+        }
     }
+
+    // Firestore에서 댓글 불러오기
+    private func fetchComments() {
+        let db = Firestore.firestore()
+        db.collection("touristSpots").document(spot.name).collection("comments").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching comments: \(error.localizedDescription)")
+            } else {
+                self.comments = snapshot?.documents.compactMap { doc -> Comment? in
+                    try? doc.data(as: Comment.self)
+                } ?? []
+            }
+        }
+    }
+    
+    // Firestore에서 사용자 닉네임 불러오기
+    private func fetchUserName() {
+        guard let user = Auth.auth().currentUser else { return }
+        let emailPrefix = user.email?.split(separator: "@").first ?? ""
+        let maskedName = maskEmailName(emailPrefix: String(emailPrefix))
+        self.userName = maskedName
+    }
+    
+    // 이메일 앞부분을 마스킹하는 함수
+    private func maskEmailName(emailPrefix: String) -> String {
+        let length = emailPrefix.count
+        let maskedPart = String(repeating: "*", count: max(0, length - 4))
+        let maskedEmail = String(emailPrefix.prefix(2)) + maskedPart + String(emailPrefix.suffix(2))
+        return maskedEmail
+    }
+}
+
+struct CommentInputSheet: View {
+    let spot: TouristSpot
+    let userName: String
+    @Binding var comments: [Comment] // 댓글을 업데이트하기 위한 바인딩
+    @State private var commentText = ""
+
+    var body: some View {
+        VStack {
+            Text("댓글 입력")
+                .font(.headline)
+                .padding()
+
+            // 이전 댓글 표시
+            VStack(alignment: .leading) {
+                ForEach(comments) { comment in
+                    Text(comment.text)
+                        .foregroundColor(.black)
+                        .font(.system(size: 13))
+                        .padding(.bottom, 1)
+                }
+            }
+            .padding(.bottom)
+
+            TextField("댓글을 입력하세요...", text: $commentText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button(action: {
+                submitComment()
+            }) {
+                Text("댓글 달기")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+            }
+            Spacer()
+        }
+        .padding()
+        .onAppear {
+            fetchComments() // 시트가 올라올 때 댓글을 불러옴
+        }
+    }
+    
+    // Firestore에서 댓글 가져오기
+    private func fetchComments() {
+        let db = Firestore.firestore()
+        
+        db.collection("touristSpots").document(spot.name).collection("comments").order(by: "timestamp").addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("Error fetching comments: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let documents = snapshot?.documents else {
+                print("No comments found.")
+                return
+            }
+            
+            // 댓글 목록을 업데이트
+            comments = documents.compactMap { document -> Comment? in
+                let data = document.data()
+                let id = document.documentID
+                let text = data["text"] as? String ?? ""
+                let userName = data["userName"] as? String ?? ""
+                let timestamp = (data["timestamp"] as? Timestamp)?.dateValue() ?? Date()
+
+                return Comment(id: id, text: text, userName: userName, timestamp: timestamp)
+            }
+        }
+    }
+
+    // Firestore에 댓글 저장하기
+    private func submitComment() {
+        guard !commentText.isEmpty else { return }
+        
+        let db = Firestore.firestore()
+        let comment = Comment(id: UUID().uuidString, text: commentText, userName: userName, timestamp: Date())
+        
+        db.collection("touristSpots").document(spot.name).collection("comments").document(comment.id).setData([
+            "text": comment.text,
+            "userName": comment.userName,
+            "timestamp": comment.timestamp
+        ]) { error in
+            if let error = error {
+                print("Error saving comment: \(error.localizedDescription)")
+            } else {
+                print("Comment successfully saved!")
+                commentText = "" // 댓글 입력 필드 초기화
+            }
+        }
+    }
+}
+
+struct Comment: Identifiable, Codable {
+    var id: String
+    var text: String
+    var userName: String
+    var timestamp: Date
 }

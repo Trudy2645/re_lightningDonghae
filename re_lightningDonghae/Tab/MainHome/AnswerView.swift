@@ -25,7 +25,7 @@ struct AnswerView: View {
     let answer: String
 
     // 주어진 이름을 기준으로 필터링된 관광지 리스트
-    var filteredSpots: [TourlistSpot] {
+    var filteredSpots: [TouristSpot] {
         let names = answer.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }
         return touristSpots.filter { spot in
             names.contains(spot.name)

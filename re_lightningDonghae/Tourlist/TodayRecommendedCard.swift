@@ -3,7 +3,7 @@
 
 import SwiftUI
 struct TodayRecommendedCard: View {
-    let spot: TourlistSpot  // 무작위로 선택된 관광지
+    let spot: TouristSpot  // 무작위로 선택된 관광지
     
     var body: some View {
         ZStack {

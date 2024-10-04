@@ -12,7 +12,7 @@ struct StampMapView: View {
 
 
 struct MapView: View {
-    @State private var selectedSpot: TourlistSpot?  // 선택된 관광지 정보 저장
+    @State private var selectedSpot: TouristSpot?  // 선택된 관광지 정보 저장
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 37.5665, longitude: 126.9780), // 서울 중심 좌표
         span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
