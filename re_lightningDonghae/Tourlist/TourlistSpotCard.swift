@@ -22,10 +22,13 @@ struct TouristSpotCard: View {
     @State private var showingCommentSheet = false // 댓글 입력 창 표시 여부
     @State private var comments: [Comment] = [] // Firestore에서 불러온 댓글 리스트
     @State private var userName = "" // 사용자의 닉네임
-    
+
+    @State private var isVisited = false // 관광지 방문 여부 확인
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 10) {
+                // 관광지 이미지
                 AsyncImage(url: URL(string: spot.imageURL)) { image in
                     image
                         .resizable()
@@ -37,6 +40,7 @@ struct TouristSpotCard: View {
                         .frame(width: 90, height: 90)
                 }
                 
+                // 관광지 정보
                 VStack(alignment: .leading, spacing: 5) {
                     Text(spot.nearestSubway)
                         .font(.caption)
@@ -52,16 +56,23 @@ struct TouristSpotCard: View {
                     Text(spot.address)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
+                    
+                    // 방문 여부에 따른 텍스트 표시
+                    Text(isVisited ? "방문 완료" : "방문 전")
+                        .font(.subheadline)
+                        .foregroundColor(isVisited ? .green : .red)
+                        .bold()
                 }
             }
-            
+
+            // 경로 찾기와 댓글 달기 버튼
             HStack {
-                
                 // 경로 찾기 버튼
                 NavigationLink(destination: Directions1View(spot: spot)) {
                     Text("경로 찾기")
                 }
                 Spacer()
+                
                 // 댓글 달기 버튼
                 Button("댓글") {
                     showingCommentSheet = true
@@ -75,6 +86,7 @@ struct TouristSpotCard: View {
         .onAppear {
             fetchComments()
             fetchUserName()
+            checkIfVisited() // 방문 여부 확인
         }
     }
     
@@ -106,6 +118,12 @@ struct TouristSpotCard: View {
         let maskedPart = String(repeating: "*", count: max(0, length - 4))
         let maskedEmail = String(emailPrefix.prefix(2)) + maskedPart + String(emailPrefix.suffix(2))
         return maskedEmail
+    }
+    
+    // UserDefaults에서 관광지 방문 여부 확인
+    private func checkIfVisited() {
+        let visitedSpots = UserDefaults.standard.stringArray(forKey: "visitedSpots") ?? []
+        isVisited = visitedSpots.contains(spot.name)
     }
 }
 
