@@ -1,16 +1,44 @@
 import SwiftUI
 
+import SwiftUI
+
 struct SubwayMapView: View {
     @State private var selectedStation: String?
     @State private var isSheetPresented = false
     
+    // 영어 역 이름과 한국어 역 이름 매핑
+    let stationNameMapping: [String: String] = [
+        "Bujeon": "부전역",
+        "Geojehaemaji": "거제해맞이역",
+        "Geoje": "거제역",
+        "Busan Nat'l Univ. of Edu.": "교대역",
+        "Dongnae": "동래역",
+        "Allak": "안락역",
+        "Songjeong": "송정역",
+        "Sinhaeundae": "신해운대역",
+        "BEXCO": "벡스코역",
+        "Centum": "센텀역",
+        "Jaesong": "재송역",
+        "Busanwondong": "원동역",
+        "OSIRIA": "오시리아역",
+        "Gijang": "기장역",
+        "Ilgwang": "일광역",
+        "Jwacheon": "좌천역",
+        "Wollae": "월내역",
+        "Seosaeng": "서생역",
+        "Taehwagang": "태화강역",
+        "Gaeunpo": "개운포역",
+        "Deokha": "덕하역",
+        "Mangyang": "망양역",
+        "Namchang": "남창역"
+    ]
+
     let stations = [
         ["Bujeon", "Geojehaemaji", "Geoje", "Busan Nat'l Univ. of Edu.", "Dongnae", "Allak"],
-        ["Songjeong", "Sinhaeundae", "BEXCO", "Centum","Jaesong","Busanwondong"],
+        ["Songjeong", "Sinhaeundae", "BEXCO", "Centum", "Jaesong", "Busanwondong"],
         ["OSIRIA", "Gijang", "Ilgwang", "Jwacheon", "Wollae", "Seosaeng"],
         ["Taehwagang", "Gaeunpo", "Deokha", "Mangyang", "Namchang"]
     ]
-    
     
     var body: some View {
         NavigationView {
@@ -27,14 +55,20 @@ struct SubwayMapView: View {
                         ForEach(0..<4) { index in
                             HStack(spacing: 0) {
                                 ForEach(stations[index], id: \.self) { station in
-                                    StationButton(station: station, selectedStation: $selectedStation, isSheetPresented: $isSheetPresented)
+                                    // 한국어 이름으로 버튼을 만듭니다.
+                                    StationButton(
+                                        station: station,
+                                        koreanName: stationNameMapping[station] ?? station, // 한국어 이름 사용
+                                        selectedStation: $selectedStation,
+                                        isSheetPresented: $isSheetPresented
+                                    )
                                 }
                             }
                         }
                     }
                 }
                 .onAppear {
-                    // 초기 값 설정, 예를 들어 첫 번째 역을 기본으로 선택
+                    // 초기 값 설정
                     if selectedStation == nil {
                         selectedStation = stations.first?.first // 첫 번째 역을 선택
                     }
@@ -47,10 +81,11 @@ struct SubwayMapView: View {
                 set: { isSheetPresented = $0 }
             )) {
                 if let station = selectedStation {
-                    StationDetailView(station: station)
+                    StationDetailView(station: station, stationNameMapping: stationNameMapping)
                         .presentationDetents([.height(200)])
                 }
-            }       }.preferredColorScheme(.light)
+            }
+        }.preferredColorScheme(.light)
     }
 }
 
@@ -140,15 +175,13 @@ struct SubwayLines: View {
 
 struct StationButton: View {
     let station: String
+    let koreanName: String // 추가된 부분
     @Binding var selectedStation: String?
     @Binding var isSheetPresented: Bool
     
     var body: some View {
         Button(action: {
-            // 역이 선택되면 먼저 `selectedStation`을 설정
             selectedStation = station
-            
-            // 선택된 역이 있는지 확인한 후 시트를 열기
             if selectedStation != nil {
                 isSheetPresented = true
             }
@@ -159,12 +192,12 @@ struct StationButton: View {
                     .frame(width: 16, height: 16)
                     .overlay(
                         Circle()
-                            .stroke(Color.my3356B4, lineWidth: 3)
+                            .stroke(Color.blue, lineWidth: 3)
                     )
                 
-                Text(station)
+                Text(koreanName) // 한국어 이름 표시
                     .font(.system(size: 17))
-                    .foregroundStyle(Color.black)
+                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                     .rotationEffect(.degrees(60))
                     .frame(width: 60, height: 100)
