@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct VisitedView: View {
-    @State private var visitedSpots: [String] = [] // 방문한 관광지 배열
+    @State private var visitedSpots: [TouristSpot] = [] // 방문한 관광지 배열
 
     var body: some View {
         NavigationView {
-            List(visitedSpots, id: \.self) { spotName in
-                Text(spotName) // 방문한 관광지 이름 표시
+            ScrollView {
+                VStack(spacing: 20) {
+                    ForEach(visitedSpots, id: \.name) { spot in
+                        TouristSpotCard(spot: spot) // TouristSpotCard를 사용하여 관광지 정보 표시
+                    }
+                }
+                .padding()
             }
             .navigationTitle("방문한 관광지")
             .onAppear {
@@ -22,8 +27,13 @@ struct VisitedView: View {
         }
     }
 
-    // UserDefaults에서 방문한 관광지 로드
+    // UserDefaults에서 방문한 관광지를 로드하고 TouristSpot과 매칭
     private func loadVisitedSpots() {
-        visitedSpots = UserDefaults.standard.stringArray(forKey: "visitedSpots") ?? []
+        let savedSpotNames = UserDefaults.standard.stringArray(forKey: "visitedSpots") ?? []
+
+        // 이름이 저장된 관광지와 매칭
+        visitedSpots = touristSpots.filter { spot in
+            savedSpotNames.contains(spot.name)
+        }
     }
 }
