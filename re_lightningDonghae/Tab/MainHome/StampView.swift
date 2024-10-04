@@ -18,7 +18,7 @@ func haversine(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Double
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var userLocation: CLLocation?
     @Published var isNearbyTouristSpot: Bool = false
-    @Published var nearbySpot: TourlistSpot?
+    @Published var nearbySpot: TouristSpot?
     
     @Published var visitedSpots: Set<UUID> = [] // 관리할 방문한 장소 목록
     

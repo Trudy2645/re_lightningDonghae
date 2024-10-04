@@ -2,7 +2,7 @@ import SwiftUI
 import CoreLocation
 
 // 관광지 정보를 담을 구조체
-struct TourlistSpot: Identifiable {
+struct TouristSpot: Identifiable {
     let id: UUID = UUID()  // 각 관광지 정보의 고유 ID
     let name: String
     let latitude: Double
@@ -22,7 +22,7 @@ struct TourlistSpot: Identifiable {
             }
         }
 }
-struct TourlistView: View {
+struct TouristView: View {
     @State private var searchText = ""  // 검색어 저장하는 상태 변수
     
     var body: some View {
@@ -36,7 +36,7 @@ struct TourlistView: View {
     }
     
     // 검색어를 기준으로 필터링된 관광지 리스트 반환
-    var filteredTouristSpots: [TourlistSpot] {
+    var filteredTouristSpots: [TouristSpot] {
         if searchText.isEmpty {
             return touristSpots
         } else {
@@ -51,5 +51,5 @@ struct TourlistView: View {
 
 
 #Preview {
-    TourlistView()
+    TouristView()
 }
