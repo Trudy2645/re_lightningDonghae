@@ -1,13 +1,7 @@
-//
-//  SubwayMapSheet.swift
-//  lightningdonghae
-//
-//  Created by 트루디 on 10/1/24.
-//
 import SwiftUI
-
 struct StationDetailView: View {
     let station: String
+    let stationNameMapping: [String: String] // 매핑을 전달받음
 
     var body: some View {
         VStack {
@@ -33,7 +27,8 @@ struct StationDetailView: View {
 
                     Spacer()
 
-                    Text("\(station)")
+                    // 매핑된 한국어 이름으로 표시
+                    Text("\(stationNameMapping[station] ?? station)")
                         .background(
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.white)
@@ -71,13 +66,15 @@ struct StationDetailView: View {
                             Text(time)
                                 .padding(5)
                         }
-                    }
-
+                    }.padding(.leading, 50)
+                    
+                    Spacer()
                     // 분리선
                     Rectangle()
-                        .frame(width: 1, height: 50)
+                        .frame(width: 1, height: 100)
                         .foregroundColor(Color.gray)
 
+                    Spacer()
                     // 하행선
                     VStack {
                         Text("태화강행")
@@ -87,7 +84,7 @@ struct StationDetailView: View {
                             Text(time)
                                 .padding(5)
                         }
-                    }
+                    }.padding(.trailing, 50)
                 }
             }
         }
@@ -119,4 +116,3 @@ struct StationDetailView: View {
         return nextTwoTimes
     }
 }
-
