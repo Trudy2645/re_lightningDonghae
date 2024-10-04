@@ -4,8 +4,6 @@
 //
 //  Created by 트루디 on 10/2/24.
 //
-
-
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
@@ -14,34 +12,44 @@ import CryptoKit
 
 struct LoginView: View {
     @State private var currentNonce: String?
-    
+    @State private var isLoggedIn = false // 로그인 상태 관리
+
     var body: some View {
-        SignInWithAppleButton(
-            .signIn,
-            onRequest: { request in
-                let nonce = randomNonceString()
-                currentNonce = nonce
-                request.requestedScopes = [.fullName, .email]
-                request.nonce = sha256(nonce)
-            },
-            onCompletion: { result in
-                switch result {
-                case .success(let authResults):
-                    guard let appleIDCredential = authResults.credential as? ASAuthorizationAppleIDCredential else {
-                        print("Apple ID Credential not found.")
-                        return
-                    }
-                    signInWithFirebase(credential: appleIDCredential)
-                    
-                case .failure(let error):
-                    print("Apple Sign In failed: \(error.localizedDescription)")
+        NavigationStack {
+            VStack {
+                if isLoggedIn {
+                    // 로그인 완료 시 MainView로 자동 이동
+                    MainView()
+                } else {
+                    SignInWithAppleButton(
+                        .signIn,
+                        onRequest: { request in
+                            let nonce = randomNonceString()
+                            currentNonce = nonce
+                            request.requestedScopes = [.fullName, .email]
+                            request.nonce = sha256(nonce)
+                        },
+                        onCompletion: { result in
+                            switch result {
+                            case .success(let authResults):
+                                guard let appleIDCredential = authResults.credential as? ASAuthorizationAppleIDCredential else {
+                                    print("Apple ID Credential not found.")
+                                    return
+                                }
+                                signInWithFirebase(credential: appleIDCredential)
+                                
+                            case .failure(let error):
+                                print("Apple Sign In failed: \(error.localizedDescription)")
+                            }
+                        }
+                    )
+                    .signInWithAppleButtonStyle(.black)
+                    .frame(width: 280, height: 60)
                 }
             }
-        )
-        .signInWithAppleButtonStyle(.black)
-        .frame(width: 280, height: 60)
+        }
     }
-    
+
     private func signInWithFirebase(credential: ASAuthorizationAppleIDCredential) {
         guard let token = credential.identityToken else {
             print("Identity token is missing.")
@@ -53,7 +61,6 @@ struct LoginView: View {
             return
         }
 
-        // currentNonce를 안전하게 언랩합니다.
         guard let nonce = currentNonce else {
             print("Current nonce is missing.")
             return
@@ -73,11 +80,13 @@ struct LoginView: View {
             if let user = authResult?.user {
                 let nickname = createMaskedNickname(from: user.email ?? "unknown")
                 saveUserToFirestore(user: user, nickname: nickname)
+                
+                // 로그인 성공 후 상태를 true로 설정 -> MainView로 이동
+                isLoggedIn = true
             }
         }
     }
-    
-    // Firestore에 사용자 저장
+
     private func saveUserToFirestore(user: User, nickname: String) {
         let db = Firestore.firestore()
 
@@ -97,27 +106,24 @@ struct LoginView: View {
         }
     }
 
-    // 이메일에서 닉네임 마스킹
     private func createMaskedNickname(from email: String) -> String {
         let parts = email.split(separator: "@")
         guard let namePart = parts.first else {
             return "Unknown"
         }
         
-        let name = String(namePart) // Substring을 String으로 변환
+        let name = String(namePart)
         if name.count <= 2 {
-            return name  // 이름이 너무 짧으면 마스킹하지 않음
+            return name
         }
         
-        // 이름의 앞 2글자와 뒤 2글자를 유지하고 중간을 *로 마스킹
         let startIndex = name.index(name.startIndex, offsetBy: 2)
         let endIndex = name.index(name.endIndex, offsetBy: -2)
         let maskedPart = String(repeating: "*", count: name.distance(from: startIndex, to: endIndex))
         
-        return String(name.prefix(2)) + maskedPart + String(name.suffix(2)) // Substring을 String으로 변환 후 사용
+        return String(name.prefix(2)) + maskedPart + String(name.suffix(2))
     }
 
-    // 랜덤 Nonce 생성 함수
     private func randomNonceString(length: Int = 32) -> String {
         let charset: Array<Character> =
         Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
@@ -149,7 +155,6 @@ struct LoginView: View {
         return result
     }
 
-    // SHA256 해시 함수
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
@@ -159,4 +164,8 @@ struct LoginView: View {
         
         return hashString
     }
+}
+
+#Preview {
+    LoginView()
 }
