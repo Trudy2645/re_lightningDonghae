@@ -63,7 +63,7 @@
 		9D9F1CD02CB038F9008DFA0C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CCF2CB038EB008DFA0C /* Popup.swift */; };
 		9D9F1CD22CB03927008DFA0C /* Visited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD12CB03915008DFA0C /* Visited.swift */; };
 		9D9F1CD42CB03975008DFA0C /* Corelocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */; };
-		9D9F1CD62CB05CC4008DFA0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD52CB05CC4008DFA0C /* GoogleService-Info.plist */; };
+		9D9F1CD82CB1127E008DFA0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD72CB1127E008DFA0C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,7 +104,7 @@
 		9D9F1CCF2CB038EB008DFA0C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		9D9F1CD12CB03915008DFA0C /* Visited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visited.swift; sourceTree = "<group>"; };
 		9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corelocation.swift; sourceTree = "<group>"; };
-		9D9F1CD52CB05CC4008DFA0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D9F1CD72CB1127E008DFA0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 				9D2170A82CAEF02F005E4CCB /* re_lightningDonghae.entitlements */,
 				9D2170A52CAEDF90005E4CCB /* user */,
 				9D2170A42CAEC555005E4CCB /* re_lightningDonghaeRelease.entitlements */,
-				9D9F1CD52CB05CC4008DFA0C /* GoogleService-Info.plist */,
+				9D9F1CD72CB1127E008DFA0C /* GoogleService-Info.plist */,
 				61AA39642CAEA0800070EBFF /* re-lightningDonghae-Info.plist */,
 				9D21706C2CAE9F36005E4CCB /* locationmanager.swift */,
 				9D2170672CAE9794005E4CCB /* Findroad */,
@@ -352,7 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D9F1CD62CB05CC4008DFA0C /* GoogleService-Info.plist in Resources */,
+				9D9F1CD82CB1127E008DFA0C /* GoogleService-Info.plist in Resources */,
 				61AA39142CAE41690070EBFF /* Preview Assets.xcassets in Resources */,
 				61AA39112CAE41690070EBFF /* Assets.xcassets in Resources */,
 			);
@@ -529,7 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = TA9TKWGKS3;
+				DEVELOPMENT_TEAM = UW9295Z57Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
