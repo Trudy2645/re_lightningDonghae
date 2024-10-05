@@ -33,11 +33,7 @@ struct TabBarView: View {
                 .onAppear {
                     checkProximityToTouristSpots()
                 }
-            RealCardView()
-                .tabItem {
-                    Image(systemName: "tram.fill")
-                    Text("동해선 노선표")
-                }
+
                 
             VisitedView()
                 .tabItem {

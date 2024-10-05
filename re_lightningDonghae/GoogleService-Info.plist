@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAo-3THOa7Ytj88Z8pnOer81WAwvLPi-A8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>550017579645</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.SSan.relightningDonghae</string>
+	<key>PROJECT_ID</key>
+	<string>donghae-459f2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>donghae-459f2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:550017579645:ios:a6fbbd14bb33aba77b0f14</string>
+</dict>
+</plist>
