@@ -53,7 +53,8 @@ class PlacesViewModel: ObservableObject {
                             return TouristSpot(
                                 name: place.name,
                                 latitude: place.geometry.location.lat,
-                                longitude: place.geometry.location.lng,
+                                longitude: place.geometry.location.lng, 
+                                category: "부전역",
                                 address: place.vicinity,
                                 nearestSubway: "부전역", // 이 부분은 추가적인 로직으로 변경 가능
                                 description: "설명입니다.", // 여기에 적절한 설명 추가

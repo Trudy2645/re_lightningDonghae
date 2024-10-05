@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		610275BE2CB158450081E6A9 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 610275BD2CB158450081E6A9 /* KakaoMapsSDK-SPM */; };
 		610275C72CB179550081E6A9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610275C62CB179550081E6A9 /* LocationModel.swift */; };
 		61A10C5B2CB150A500CA1911 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61A10C5A2CB150A500CA1911 /* GoogleService-Info.plist */; };
 		61AA390D2CAE41680070EBFF /* re_lightningDonghaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */; };
@@ -140,7 +139,6 @@
 				9D21707B2CAEC484005E4CCB /* FirebaseAppCheck in Frameworks */,
 				9D21707F2CAEC484005E4CCB /* FirebaseAuth in Frameworks */,
 				9D2170752CAEC484005E4CCB /* FirebaseAnalytics in Frameworks */,
-				610275BE2CB158450081E6A9 /* KakaoMapsSDK-SPM in Frameworks */,
 				9D21708B2CAEC484005E4CCB /* FirebaseFirestore in Frameworks */,
 				9D2170952CAEC484005E4CCB /* FirebaseInstallations in Frameworks */,
 				9D2170912CAEC484005E4CCB /* FirebaseFunctionsCombine-Community in Frameworks */,
@@ -335,7 +333,6 @@
 			);
 			name = re_lightningDonghae;
 			packageProductDependencies = (
-				610275BD2CB158450081E6A9 /* KakaoMapsSDK-SPM */,
 			);
 			productName = re_lightningDonghae;
 			productReference = 61AA39092CAE41680070EBFF /* re_lightningDonghae.app */;
@@ -667,11 +664,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		610275BD2CB158450081E6A9 /* KakaoMapsSDK-SPM */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 610275BC2CB158450081E6A9 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
-			productName = "KakaoMapsSDK-SPM";
-		};
 		9D2170742CAEC484005E4CCB /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9D2170722CAEC354005E4CCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

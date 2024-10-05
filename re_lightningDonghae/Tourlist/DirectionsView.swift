@@ -38,65 +38,100 @@ struct Directions1View: View {
 
     var body: some View {
         VStack {
+            VStack {
+                // 출발지와 도착지 텍스트필드
+                Text("출발지: 내 위치")
+                    .frame(width: 300, height: 15, alignment: .leading)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+                
+                Text("도착지: \(spot.name)")
+                    .frame(width: 300, height: 15, alignment: .leading)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+            }
+            .padding(.horizontal)
             if loading {
                 ProgressView("경로를 가져오는 중...")
             } else {
                 // 1. 현재 위치에서 가장 가까운 동해선 역까지의 경로 표시
                 if let directionsToStation = directionsToStation, let closestStation = closestStation {
-                    Text("가장 가까운 동해선 역: \(closestStation.name)")
-                        .font(.headline)
                     List(directionsToStation.routes.first?.legs ?? [], id: \.id) { leg in
                         VStack(alignment: .leading) {
-                            Text("소요 시간: \(leg.duration.text)")
-                                .fontWeight(.bold)
+                            HStack{
+                                Image(systemName: "mappin.and.ellipse")
+                                    .foregroundColor(.red)
+                                Text("출발지: 내 위치")
+                                Text("(소요 시간: \(leg.duration.text))")
+                                    .fontWeight(.bold)
+                            }
                             ForEach(leg.steps, id: \.instructions) { step in
                                 Text(step.instructions)
                                     .padding(.vertical, 2)
                             }
+                            // 구글 지도에서 경로 보기 버튼
+                            Button(action: {
+                                openGoogleMapsForStation()
+                            }) {
+                                Text("구글 지도에서 보기")
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 8)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                            }
                         }
                     }
                     
-                    // 구글 지도에서 경로 보기 버튼
-                    Button(action: {
-                        openGoogleMapsForStation()
-                    }) {
-                        Text("구글 지도에서 보기 (내 위치 -> \(closestStation.name))")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                    
+                    HStack {
+                        Image(systemName: "tram.fill")
+                            .foregroundColor(.blue)
+                        VStack(alignment: .leading) {
+                            Text("\(closestStation.name)승차")
+                                .font(.headline)
+                                .foregroundColor(.blue)
+                            Text("\(spot.nearestSubway)하차")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                        Spacer()
                     }
-                    .padding(.top)
+                    .background()
+                    .padding(.horizontal)
                 }
-
+                
+                
                 // 2. TouristSpot의 nearestSubway에서 TouristSpot까지의 경로 표시
                 if let directionsToSpot = directionsToSpot {
-                    Text("\(spot.nearestSubway)에서 \(spot.name)까지의 경로")
-                        .font(.headline)
                     List(directionsToSpot.routes.first?.legs ?? [], id: \.id) { leg in
                         VStack(alignment: .leading) {
-                            Text("소요 시간: \(leg.duration.text)")
-                                .fontWeight(.bold)
+                            HStack{
+                                Image(systemName: "mappin.and.ellipse")
+                                    .foregroundColor(.red)
+                                Text("출발지: \(spot.nearestSubway)")
+                                Text("(소요 시간: \(leg.duration.text))")
+                                    .fontWeight(.bold)
+                            }
                             ForEach(leg.steps, id: \.instructions) { step in
                                 Text(step.instructions)
                                     .padding(.vertical, 2)
                             }
+                            // 구글 지도에서 경로 보기 버튼
+                            Button(action: {
+                                openGoogleMapsForSpot()
+                            }) {
+                                Text("구글 지도에서 보기")
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 8)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                            }
                         }
                     }
-                    
-                    // 구글 지도에서 경로 보기 버튼
-                    Button(action: {
-                        openGoogleMapsForSpot()
-                    }) {
-                        Text("구글 지도에서 보기 (\(spot.nearestSubway) -> \(spot.name))")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                    }
-                    .padding(.top)
                 }
             }
         }
