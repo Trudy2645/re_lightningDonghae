@@ -163,7 +163,8 @@ struct SelectLifeStyleView: View {
     @State private var selectedOption: String? = nil // 선택된 제안
     @State private var isShowingAnswerView = false // 장소 추천 뷰로 이동 여부
     @State private var response: String? = nil // API 응답 저장
-    
+    @State private var isButtonHidden = false // 버튼 숨김 상태
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -179,25 +180,39 @@ struct SelectLifeStyleView: View {
                 }
                 .font(.title)
 
-                // 텍스트 입력 필드
-                TextField("예: 우울해", text: $searchText)
-                    .padding(.vertical, 10)
-                    .font(.body)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(8)
-                    .padding(.trailing, 50)
-                    .padding(.vertical, 10)
+                // 텍스트 입력 필드 (조건부로 표시)
+                if responseOptions.isEmpty {
+                    TextField("예: 우울해", text: $searchText)
+                        .padding(.vertical, 10)
+                        .font(.body)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8)
+                        .padding(.trailing, 50)
+                        .padding(.vertical, 10)
+                }
 
-                // 검색 버튼
-                Button(action: {
-                    fetchAIResponseForSuggestions() // 첫 번째 API 호출
-                }) {
-                    Text("AI 제안 받기")
+                // AI 제안 받기 버튼 (숨기기 조건 추가)
+                if !isButtonHidden {
+                    Button(action: {
+                        fetchAIResponseForSuggestions() // 첫 번째 API 호출
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) // 키보드 숨기기
+                        isButtonHidden = true // 버튼 숨기기
+                    }) {
+                        Text("AI 제안 받기")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
+                } else {
+                    // 버튼이 숨겨졌을 때 사용자가 입력한 문장 표시
+                    Text(searchText)
                         .font(.headline)
-                        .foregroundColor(.white)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.blue.opacity(0.1))
                         .cornerRadius(10)
+                        .padding(.vertical, 5)
                 }
 
                 // GPT 제안 버튼들
@@ -268,7 +283,7 @@ struct SelectLifeStyleView: View {
     private func fetchAIResponseForDetails(prompt: String) {
         guard let url = URL(string: "http://34.22.84.70:8000/api/query/") else { return }
         
-        let request = AIRequest(prompt: "다음 제안에 맞는 장소를 추천해줘: \(prompt)이중에서 추천해줘. 뒤쪽에 설명에 해당하게 해줘. 구구롤러스케이트장(롤러, 인라인스케이트장),플라피아(꽃가게),챔피언 키즈카페(키즈카페),철향, 텟판야끼(육류,고기요리),겟럭키(카페, 디저트),ShaBing 샤빙(카페, 디저트),무명정원(카페, 디저트),모브포그(카페, 디저트),젤라떼리아 사우스브룩 연산(카페, 디저트),우든테이블(케이크전문),카페헤븐(카페, 디저트),소금(요리주점),리프페럿 사직점(동물카페),아휘의 부엌(이자카야),이조솥밥(한식),모노스코프(카페, 디저트),etalee(카페, 디저트),맛퍼줘(종합분식),바운티(카페, 디저트),수민어울공원(근린공원),오크레페 동래점(카페, 디저트),라일라카페(카페, 디저트),이로(이자카야),점프키즈카페(키즈카페, 실내놀이터),코모도테이블(카페, 디저트),충렬사(기념물),보헤미아(카페, 디저트),스미타티하우스(카페, 디저트),모해나키친(양식),온천천카페거리(거리, 골목),불란서와이너리(와인),온들랑 샤브샤브(샤브샤브),홀릭스 그라운드 (실내체육관),오렌지실내테니스장(스포츠, 오락),우리끼리 키즈카페 꿈꾸는 마을 해운대 재송점(키즈카페, 실내놀이터),한치두치 재송점(일본식 라멘),한빛공원(근린공원),멜리데이스튜디오(셀프, 대여스튜디오),재송한마음시장(시장),스튜디오 필(셀프, 대여스튜디오),왓더버거 센텀점(햄버거),르꽁비프(프랑스 음식),서요 재송점(요리주점),베아트리체부티크(한복대여),키자니아 부산(체험, 홍보관),팔선생(중식당),영화의 전당(영화관),롯데백화점 센텀시티점(백화점),신세계백화점 센텀시티점(백화점),센텀 스파랜드(온천, 스파),nan(nan) 이중에서 추천하는 장소를 앞의 이름만 ,로 구분해서 나열해, 그리고 너가 아는 장소라며 너의 배경지식을 조금 활용해서 답변의 질을 높여도 좋아.")
+        let request = AIRequest(prompt: "다음 제안에 맞는 장소를 추천해줘: \(prompt)이중에서 추천해줘. 쇼핑, 체험, 스포츠, 바다, 온천, 액티비티, 힐링, 맛집, 카페, 키즈카페,경치,전시,사진, 영화,체육관 중에서 추천해줘. 이중에서 추천해줘. 딱 그 단어만 말해줘. 두개말해도 괜찮아.")
         
         guard let jsonData = try? JSONEncoder().encode(request) else { return }
         
@@ -295,4 +310,3 @@ struct SelectLifeStyleView: View {
         }.resume()
     }
 }
-

@@ -7,6 +7,7 @@ struct TouristSpot: Identifiable {
     let name: String
     let latitude: Double
     let longitude: Double
+    let category: String
     let address: String
     let nearestSubway: String
     let description: String
