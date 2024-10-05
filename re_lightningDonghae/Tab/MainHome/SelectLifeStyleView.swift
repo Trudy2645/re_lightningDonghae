@@ -224,7 +224,6 @@ struct SelectLifeStyleView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("AI 추천")
             .navigationDestination(isPresented: $isShowingAnswerView) {
                 if let response = response {
                     AnswerView(answer: response) // API로부터 받은 장소 추천 결과를 보여주는 뷰
@@ -237,7 +236,7 @@ struct SelectLifeStyleView: View {
     private func fetchAIResponseForSuggestions() {
         guard let url = URL(string: "http://34.22.84.70:8000/api/query/") else { return }
         
-        let prompt = "\(searchText) 사용자가 이런 상황이래. 그러면 이런 상황을 맛집, 활동, 영화, 산, 바다"
+        let prompt = "\(searchText) 사용자가 이런 상황이래. 이 상황을 어떤 방식으로 해결하면 좋을지 3가지만 추천해줘. 카페,체험,공원,맛집,스포츠,체육관,디저트,거리,산책,백화점등 사용자의 상황에 맞는 제안 최소 1가지 최대 4가지만 추천하는 질문으로 콤마로 구분해서 말해줘. 관련있는 것만 골라줘.존댓말로 말해줘. 예시답변은 배고플 때라고 말했을때 '근처 맛집에서 맛있는 음식을 먹어보는 건 어떠신가요?'& 디저트 카페에서 달콤한 간식을 즐겨보는 건 어떠신가요?& 백화점 푸드코트에서 다양한 음식을 골라 먹는 것도 좋은 방법입니다!이거야 &로 정확하게 구분해줘"
         let request = AIRequest(prompt: prompt)
         
         guard let jsonData = try? JSONEncoder().encode(request) else { return }
@@ -257,7 +256,7 @@ struct SelectLifeStyleView: View {
                 let aiResponse = try JSONDecoder().decode(AIResponse.self, from: data)
                 DispatchQueue.main.async {
                     // 제안들을 콤마로 구분해 배열로 변환
-                    self.responseOptions = aiResponse.response.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }
+                    self.responseOptions = aiResponse.response.split(separator: "&").map { $0.trimmingCharacters(in: .whitespaces) }
                 }
             } catch {
                 print("Decoding error: \(error)")
@@ -269,7 +268,7 @@ struct SelectLifeStyleView: View {
     private func fetchAIResponseForDetails(prompt: String) {
         guard let url = URL(string: "http://34.22.84.70:8000/api/query/") else { return }
         
-        let request = AIRequest(prompt: "다음 제안에 맞는 장소를 추천해줘: \(prompt)이중에서 추천해줘. 뒤쪽에 설명에 해당하게 해줘. 구구롤러스케이트장(롤러, 인라인스케이트장),플라피아(꽃가게),챔피언 키즈카페(키즈카페),철향, 텟판야끼(육류,고기요리),겟럭키(카페, 디저트),ShaBing 샤빙(카페, 디저트),무명정원(카페, 디저트),모브포그(카페, 디저트),젤라떼리아 사우스브룩 연산(카페, 디저트),우든테이블(케이크전문),카페헤븐(카페, 디저트),소금(요리주점),리프페럿 사직점(동물카페),아휘의 부엌(이자카야),이조솥밥(한식),모노스코프(카페, 디저트),etalee(카페, 디저트),맛퍼줘(종합분식),바운티(카페, 디저트),수민어울공원(근린공원),오크레페 동래점(카페, 디저트),라일라카페(카페, 디저트),이로(이자카야),점프키즈카페(키즈카페, 실내놀이터),코모도테이블(카페, 디저트),충렬사(기념물),보헤미아(카페, 디저트),스미타티하우스(카페, 디저트),모해나키친(양식),온천천카페거리(거리, 골목),불란서와이너리(와인),온들랑 샤브샤브(샤브샤브),홀릭스 그라운드 (실내체육관),오렌지실내테니스장(스포츠, 오락),우리끼리 키즈카페 꿈꾸는 마을 해운대 재송점(키즈카페, 실내놀이터),한치두치 재송점(일본식 라멘),한빛공원(근린공원),멜리데이스튜디오(셀프, 대여스튜디오),재송한마음시장(시장),스튜디오 필(셀프, 대여스튜디오),왓더버거 센텀점(햄버거),르꽁비프(프랑스 음식),서요 재송점    (요리주점),베아트리체부티크(한복대여),키자니아 부산(체험, 홍보관),팔선생(중식당),영화의 전당(영화관),롯데백화점 센텀시티점(백화점),신세계백화점 센텀시티점(백화점),센텀 스파랜드(온천, 스파),nan(nan) 이중에서 추천하는 장소를 앞의 이름만 ,로 구분해서 나열해, 그리고 너가 아는 장소라며 너의 배경지식을 조금 활용해서 답변의 질을 높여도 좋아.")
+        let request = AIRequest(prompt: "다음 제안에 맞는 장소를 추천해줘: \(prompt)이중에서 추천해줘. 뒤쪽에 설명에 해당하게 해줘. 구구롤러스케이트장(롤러, 인라인스케이트장),플라피아(꽃가게),챔피언 키즈카페(키즈카페),철향, 텟판야끼(육류,고기요리),겟럭키(카페, 디저트),ShaBing 샤빙(카페, 디저트),무명정원(카페, 디저트),모브포그(카페, 디저트),젤라떼리아 사우스브룩 연산(카페, 디저트),우든테이블(케이크전문),카페헤븐(카페, 디저트),소금(요리주점),리프페럿 사직점(동물카페),아휘의 부엌(이자카야),이조솥밥(한식),모노스코프(카페, 디저트),etalee(카페, 디저트),맛퍼줘(종합분식),바운티(카페, 디저트),수민어울공원(근린공원),오크레페 동래점(카페, 디저트),라일라카페(카페, 디저트),이로(이자카야),점프키즈카페(키즈카페, 실내놀이터),코모도테이블(카페, 디저트),충렬사(기념물),보헤미아(카페, 디저트),스미타티하우스(카페, 디저트),모해나키친(양식),온천천카페거리(거리, 골목),불란서와이너리(와인),온들랑 샤브샤브(샤브샤브),홀릭스 그라운드 (실내체육관),오렌지실내테니스장(스포츠, 오락),우리끼리 키즈카페 꿈꾸는 마을 해운대 재송점(키즈카페, 실내놀이터),한치두치 재송점(일본식 라멘),한빛공원(근린공원),멜리데이스튜디오(셀프, 대여스튜디오),재송한마음시장(시장),스튜디오 필(셀프, 대여스튜디오),왓더버거 센텀점(햄버거),르꽁비프(프랑스 음식),서요 재송점(요리주점),베아트리체부티크(한복대여),키자니아 부산(체험, 홍보관),팔선생(중식당),영화의 전당(영화관),롯데백화점 센텀시티점(백화점),신세계백화점 센텀시티점(백화점),센텀 스파랜드(온천, 스파),nan(nan) 이중에서 추천하는 장소를 앞의 이름만 ,로 구분해서 나열해, 그리고 너가 아는 장소라며 너의 배경지식을 조금 활용해서 답변의 질을 높여도 좋아.")
         
         guard let jsonData = try? JSONEncoder().encode(request) else { return }
         
