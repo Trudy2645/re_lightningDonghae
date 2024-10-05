@@ -14,8 +14,17 @@ struct VisitedView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
+                    
                     ForEach(visitedSpots, id: \.name) { spot in
-                        TouristSpotCard(spot: spot) // TouristSpotCard를 사용하여 관광지 정보 표시
+                        ZStack{
+                            TouristSpotCard(spot: spot) // TouristSpotCard를 사용하여 관광지 정보 표시
+                            Image("도장")
+                                .resizable()
+                                .frame(width: 86, height: 86)
+                                .rotationEffect(.degrees(-45)) // 45도 회전 적용
+                                .padding(.leading, 200)
+                                .opacity(0.3)
+                        }
                     }
                 }
                 .padding()

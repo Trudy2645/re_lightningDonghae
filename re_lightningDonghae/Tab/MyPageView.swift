@@ -23,8 +23,9 @@ struct MyPageView: View {
                     .foregroundColor(.gray)
                     .padding()
             } else {
+                
                 List(favoriteSpots, id: \.self) { spot in
-                    Text(spot)
+                        Text(spot)
                 }
             }
         }
