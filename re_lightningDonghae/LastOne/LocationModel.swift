@@ -30,6 +30,7 @@
 //    }
 //}
 //
+
 //class PlacesViewModel: ObservableObject {
 //    @Published var touristSpots: [TouristSpot] = []
 //    
