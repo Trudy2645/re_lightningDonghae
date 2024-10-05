@@ -45,101 +45,113 @@ struct MainView: View {
                 } //: HSTACK
                 .padding()
                 
-                // 주변 스탬프 찾기
-                NavigationLink(destination: StampMapView(), label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 350, height: 70)
-                            .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 0)
-                        
-                        HStack(spacing: 114) {
-                            Text("주변 스탬프 찾기")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(.leading, 39)
-                                .padding(.vertical, 24)
-                            
-                            Image("FindIcon")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 65, height: 65)
-                                .clipped()
-                                .padding(.trailing, 39)
-                                .padding(.top, 5)
-                        }
-                    }
-                })
+                
                 
                 Spacer()
                     .frame(height: 12)
                 
                 // 라이프스타일 및 도착역 선택 버튼
-                HStack(spacing: 19) {
+                HStack {
                     Button {
                         isLifeStyleSelected = true
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .frame(width: 167, height: 180)
+                                .frame(width: 174, height: 262)
                                 .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 0)
-                            
                             VStack(alignment: .leading) {
-                                Spacer().frame(height: 40)
-                                Group {
-                                    Text("라이프스타일")
-                                    Spacer().frame(height: 8)
-                                    Text("선택하기")
-                                }
+                                Text("라이프 스타일")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 16)
+                                    .padding(.bottom, 3)
+                                    .padding(.top, 120)
+                                Text("입력하기")
+                                    .bold()
                                 .font(.system(size: 20))
-                                .fontWeight(.semibold)
+                                .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .padding(.leading, 16)
-                                
+//                                Spacer()
                                 Image("LifeStylefire")
                                     .resizable()
                                     .frame(width: 85, height: 85)
                                     .padding(.leading, 82)
-                                    .padding(.top, -13)
-                                    .padding(.bottom, 9)
+                                    .padding(.top,50)
+//                                    .padding(.top, -200)
+                                    
                             }
+                            .padding(.top, -100)
                         }
                     }
+                    .padding(.leading)
                     .navigationDestination(isPresented: $isLifeStyleSelected) {
                         SelectLifeStyleView()
+                    
                     }
                     
-                    Button {
-                        isSubwayStationSelected = true
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .frame(width: 167, height: 180)
-                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 0)
-                            
-                            VStack(alignment: .leading) {
-                                Spacer().frame(height: 40)
-                                Group {
-                                    Text("도착역")
-                                    Spacer().frame(height: 8)
-                                    Text("선택하기")
-                                }
-                                .font(.system(size: 20))
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .padding(.leading, 16)
+                    VStack{
+                        Button {
+                            isSubwayStationSelected = true
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .frame(width: 167, height: 180)
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 0)
                                 
-                                Image("GetStationIcon")
-                                    .resizable()
-                                    .frame(width: 85, height: 85)
-                                    .padding(.leading, 82)
-                                    .padding(.top, -13)
-                                    .padding(.bottom, 9)
+                                VStack(alignment: .leading) {
+                                    Spacer().frame(height: 40)
+                                    Group {
+                                        Text("도착역")
+                                            .bold()
+                                        Spacer().frame(height: 8)
+                                        Text("선택하기")
+                                            .bold()
+                                    }
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 16)
+                                    
+                                    Image("GetStationIcon")
+                                        .resizable()
+                                        .frame(width: 85, height: 85)
+                                        .padding(.leading, 82)
+                                        .padding(.top, -13)
+                                        .padding(.bottom, 9)
+                                }
                             }
                         }
+                        .navigationDestination(isPresented: $isSubwayStationSelected) {
+                            SelectArrivalStation()
+                        }
+                        // 주변 스탬프 찾기
+                        NavigationLink(destination: StampMapView(), label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .frame(width: 164, height: 70)
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 0)
+                                
+                                HStack {
+                                    Text("스탬프 찾기")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 20)
+                                        .padding(.vertical, 24)
+                                    
+                                    Image("FindIcon")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 35, height: 35)
+                                        .clipped()
+                                        .padding(.trailing)
+                                        .padding(.top, 5)
+                                }
+                            }
+                        })
                     }
-                    .navigationDestination(isPresented: $isSubwayStationSelected) {
-                        SelectArrivalStation()
-                    }
+                    
                 } //: HSTACK
                 
                 // 오늘의 추천 카드
@@ -154,11 +166,155 @@ struct MainView: View {
                 }
                 .padding(.top, -30)
                 
-                // 랜덤 추천 관광지
-                let randomIndices = generateRandomIndices(count: touristSpots.count, numberOfRandomItems: 2)
-                TodayRecommendedCard(spot: touristSpots[randomIndices[0]])
-                    .padding(.top, -20)
-                TodayRecommendedCard(spot: touristSpots[randomIndices[1]])
+                VStack{
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.clear)
+                            .background(.white)
+                            .frame(width: 370, height: 120)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .inset(by: 0.5)
+                                    .stroke(Color(red: 0.87, green: 0.91, blue: 0.96), lineWidth: 1)
+                            )
+                        VStack{
+                            HStack {
+                                AsyncImage(url: URL(string: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171117_54%2F1510878782796HdbRU_PNG%2FKcmlAdwK2BGHBSlAU80N8z3z.PNG.png")) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(8)
+                                } placeholder: {
+                                    ProgressView()
+                                        .frame(width: 100, height: 100)
+                                }.padding(.leading, 20)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("벡스코역")
+                                        .font(.caption)
+                                        .foregroundColor(.blue)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background(Color.blue.opacity(0.1))
+                                        .cornerRadius(10)
+                                    Text("영화의 전당")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+                                    
+                                    Text("부산 해운대구")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(2)
+                                        .multilineTextAlignment(.leading)
+                                }
+                                .padding(.leading, 10)
+                                Spacer()
+                                
+                                Button(action: {
+                                    print("dd")
+                                }, label: {
+                                    Image(systemName: "arrow.up.forward.circle.fill")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                        .foregroundStyle(Color.blue)
+                                })
+                                .padding(.trailing, 30)
+                                .padding(.top, 50)
+                            }
+                            
+                        }
+                        
+                        //                        NavigationLink(destination: Directions1View(spot: )) {
+                        //                            ZStack {
+                        //                                RoundedRectangle(cornerRadius: 8)
+                        //                                    .fill(Color.blue)
+//                                    .frame(width: 30, height: 30)
+//                                    .rotationEffect(Angle(degrees: 45))
+//                                
+//                                Image(systemName: "arrow.turn.up.right")
+//                                    .foregroundColor(.white)
+//                                    .font(.system(size: 14))
+//                                    .bold()
+//                            }
+//                        }
+//                        .padding(.top)
+//                            .padding(.leading, 300)
+                    }
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.clear)
+                            .background(.white)
+                            .frame(width: 370, height: 120)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .inset(by: 0.5)
+                                    .stroke(Color(red: 0.87, green: 0.91, blue: 0.96), lineWidth: 1)
+                            )
+                        VStack{
+                            HStack {
+                                AsyncImage(url: URL(string: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220830_16%2F1661821720704gnMTR_JPEG%2F%25B9%25E9%25C8%25AD%25C1%25A1_%25BC%25BE%25C5%25D2%25BD%25C3%25C6%25BC%25C1%25A1.jpg")) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(8)
+                                } placeholder: {
+                                    ProgressView()
+                                        .frame(width: 100, height: 100)
+                                }.padding(.leading, 20)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("벡스코역")
+                                        .font(.caption)
+                                        .foregroundColor(.blue)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background(Color.blue.opacity(0.1))
+                                        .cornerRadius(10)
+                                    Text("롯데백화점 센텀시티점")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+                                    
+                                    Text("부산 해운대구")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(2)
+                                        .multilineTextAlignment(.leading)
+                                }
+                                .padding(.leading, 10)
+                                Spacer()
+                                Button(action: {
+                                    print("dd")
+                                }, label: {
+                                    Image(systemName: "arrow.up.forward.circle.fill")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                        .foregroundStyle(Color.blue)
+                                })
+                                .padding(.trailing, 30)
+                                .padding(.top, 50)
+                            }
+                            
+                        }
+                        
+//                        NavigationLink(destination: Directions1View(spot: )) {
+//                            ZStack {
+//                                RoundedRectangle(cornerRadius: 8)
+//                                    .fill(Color.blue)
+//                                    .frame(width: 30, height: 30)
+//                                    .rotationEffect(Angle(degrees: 45))
+//
+//                                Image(systemName: "arrow.turn.up.right")
+//                                    .foregroundColor(.white)
+//                                    .font(.system(size: 14))
+//                                    .bold()
+//                            }
+//                        }
+//                        .padding(.top)
+//                            .padding(.leading, 300)
+                    }
+                }
                 
             } //: VSTACK
         } //: NAVIGATIONSTACK
