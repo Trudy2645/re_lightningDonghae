@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		618898422CB02C1300B399CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 618898412CB02C1300B399CA /* GoogleService-Info.plist */; };
 		61AA390D2CAE41680070EBFF /* re_lightningDonghaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */; };
 		61AA39112CAE41690070EBFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA39102CAE41690070EBFF /* Assets.xcassets */; };
 		61AA39142CAE41690070EBFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA39132CAE41690070EBFF /* Preview Assets.xcassets */; };
@@ -64,10 +63,10 @@
 		9D9F1CD02CB038F9008DFA0C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CCF2CB038EB008DFA0C /* Popup.swift */; };
 		9D9F1CD22CB03927008DFA0C /* Visited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD12CB03915008DFA0C /* Visited.swift */; };
 		9D9F1CD42CB03975008DFA0C /* Corelocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */; };
+		9D9F1CD62CB05CC4008DFA0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD52CB05CC4008DFA0C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		618898412CB02C1300B399CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61AA39092CAE41680070EBFF /* re_lightningDonghae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = re_lightningDonghae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = re_lightningDonghaeApp.swift; sourceTree = "<group>"; };
 		61AA39102CAE41690070EBFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		9D9F1CCF2CB038EB008DFA0C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		9D9F1CD12CB03915008DFA0C /* Visited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visited.swift; sourceTree = "<group>"; };
 		9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corelocation.swift; sourceTree = "<group>"; };
+		9D9F1CD52CB05CC4008DFA0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 				9D2170A82CAEF02F005E4CCB /* re_lightningDonghae.entitlements */,
 				9D2170A52CAEDF90005E4CCB /* user */,
 				9D2170A42CAEC555005E4CCB /* re_lightningDonghaeRelease.entitlements */,
-				618898412CB02C1300B399CA /* GoogleService-Info.plist */,
+				9D9F1CD52CB05CC4008DFA0C /* GoogleService-Info.plist */,
 				61AA39642CAEA0800070EBFF /* re-lightningDonghae-Info.plist */,
 				9D21706C2CAE9F36005E4CCB /* locationmanager.swift */,
 				9D2170672CAE9794005E4CCB /* Findroad */,
@@ -352,8 +352,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D9F1CD62CB05CC4008DFA0C /* GoogleService-Info.plist in Resources */,
 				61AA39142CAE41690070EBFF /* Preview Assets.xcassets in Resources */,
-				618898422CB02C1300B399CA /* GoogleService-Info.plist in Resources */,
 				61AA39112CAE41690070EBFF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.trudy.relightningDonghae;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SSan.relightningDonghae;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
