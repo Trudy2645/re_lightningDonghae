@@ -60,7 +60,7 @@ class PlacesViewModel: ObservableObject {
             SubwayStation(name: "부전역 동해선", latitude: 35.164668, longitude: 129.06011),
             SubwayStation(name: "거제해맞이역 동해선", latitude: 35.182197, longitude:129.069315),
             SubwayStation(name: "거제역 동해선", latitude: 35.188587, longitude:129.073904),
-            SubwayStation(name: "부산 교대역 동해선", latitude: 37.492975, longitude:127.013814),
+            SubwayStation(name: "부산 교대역 동해선", latitude: 35.19396, longitude:129.0798),
             SubwayStation(name: "동래역 동해선", latitude: 35.205614, longitude:129.078502),
             SubwayStation(name: "안락역 동해선", latitude: 35.195907, longitude:129.101062),
             SubwayStation(name: "부산원동 동해선", latitude: 35.362703, longitude:128.920499),
