@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610275BE2CB158450081E6A9 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 610275BD2CB158450081E6A9 /* KakaoMapsSDK-SPM */; };
+		610275C72CB179550081E6A9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610275C62CB179550081E6A9 /* LocationModel.swift */; };
+		61A10C5B2CB150A500CA1911 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61A10C5A2CB150A500CA1911 /* GoogleService-Info.plist */; };
 		61AA390D2CAE41680070EBFF /* re_lightningDonghaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */; };
 		61AA39112CAE41690070EBFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA39102CAE41690070EBFF /* Assets.xcassets */; };
 		61AA39142CAE41690070EBFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA39132CAE41690070EBFF /* Preview Assets.xcassets */; };
@@ -63,10 +66,24 @@
 		9D9F1CD02CB038F9008DFA0C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CCF2CB038EB008DFA0C /* Popup.swift */; };
 		9D9F1CD22CB03927008DFA0C /* Visited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD12CB03915008DFA0C /* Visited.swift */; };
 		9D9F1CD42CB03975008DFA0C /* Corelocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */; };
-		9D9F1CD82CB1127E008DFA0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D9F1CD72CB1127E008DFA0C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		610275C42CB15A9D0081E6A9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		610275C62CB179550081E6A9 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		61A10C5A2CB150A500CA1911 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61AA39092CAE41680070EBFF /* re_lightningDonghae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = re_lightningDonghae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = re_lightningDonghaeApp.swift; sourceTree = "<group>"; };
 		61AA39102CAE41690070EBFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,7 +121,6 @@
 		9D9F1CCF2CB038EB008DFA0C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		9D9F1CD12CB03915008DFA0C /* Visited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visited.swift; sourceTree = "<group>"; };
 		9D9F1CD32CB0396D008DFA0C /* Corelocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corelocation.swift; sourceTree = "<group>"; };
-		9D9F1CD72CB1127E008DFA0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +140,7 @@
 				9D21707B2CAEC484005E4CCB /* FirebaseAppCheck in Frameworks */,
 				9D21707F2CAEC484005E4CCB /* FirebaseAuth in Frameworks */,
 				9D2170752CAEC484005E4CCB /* FirebaseAnalytics in Frameworks */,
+				610275BE2CB158450081E6A9 /* KakaoMapsSDK-SPM in Frameworks */,
 				9D21708B2CAEC484005E4CCB /* FirebaseFirestore in Frameworks */,
 				9D2170952CAEC484005E4CCB /* FirebaseInstallations in Frameworks */,
 				9D2170912CAEC484005E4CCB /* FirebaseFunctionsCombine-Community in Frameworks */,
@@ -142,6 +159,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		610275C52CB1792F0081E6A9 /* LastOne */ = {
+			isa = PBXGroup;
+			children = (
+				610275C62CB179550081E6A9 /* LocationModel.swift */,
+			);
+			path = LastOne;
+			sourceTree = "<group>";
+		};
 		61AA39002CAE41680070EBFF = {
 			isa = PBXGroup;
 			children = (
@@ -166,8 +191,8 @@
 				9D2170A82CAEF02F005E4CCB /* re_lightningDonghae.entitlements */,
 				9D2170A52CAEDF90005E4CCB /* user */,
 				9D2170A42CAEC555005E4CCB /* re_lightningDonghaeRelease.entitlements */,
-				9D9F1CD72CB1127E008DFA0C /* GoogleService-Info.plist */,
 				61AA39642CAEA0800070EBFF /* re-lightningDonghae-Info.plist */,
+				61A10C5A2CB150A500CA1911 /* GoogleService-Info.plist */,
 				9D21706C2CAE9F36005E4CCB /* locationmanager.swift */,
 				9D2170672CAE9794005E4CCB /* Findroad */,
 				61AA390C2CAE41680070EBFF /* re_lightningDonghaeApp.swift */,
@@ -177,6 +202,7 @@
 				61AA392D2CAE47FA0070EBFF /* Login */,
 				61AA39222CAE44FC0070EBFF /* SubwayMap */,
 				61AA39102CAE41690070EBFF /* Assets.xcassets */,
+				610275C52CB1792F0081E6A9 /* LastOne */,
 				61AA39122CAE41690070EBFF /* Preview Content */,
 			);
 			path = re_lightningDonghae;
@@ -301,12 +327,16 @@
 				61AA39052CAE41680070EBFF /* Sources */,
 				61AA39062CAE41680070EBFF /* Frameworks */,
 				61AA39072CAE41680070EBFF /* Resources */,
+				610275C42CB15A9D0081E6A9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = re_lightningDonghae;
+			packageProductDependencies = (
+				610275BD2CB158450081E6A9 /* KakaoMapsSDK-SPM */,
+			);
 			productName = re_lightningDonghae;
 			productReference = 61AA39092CAE41680070EBFF /* re_lightningDonghae.app */;
 			productType = "com.apple.product-type.application";
@@ -337,6 +367,7 @@
 			mainGroup = 61AA39002CAE41680070EBFF;
 			packageReferences = (
 				9D2170722CAEC354005E4CCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				610275BC2CB158450081E6A9 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 61AA390A2CAE41680070EBFF /* Products */;
 			projectDirPath = "";
@@ -352,9 +383,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D9F1CD82CB1127E008DFA0C /* GoogleService-Info.plist in Resources */,
 				61AA39142CAE41690070EBFF /* Preview Assets.xcassets in Resources */,
 				61AA39112CAE41690070EBFF /* Assets.xcassets in Resources */,
+				61A10C5B2CB150A500CA1911 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +413,7 @@
 				61AA39452CAE70A80070EBFF /* ResultOfStationSelection.swift in Sources */,
 				61AA393B2CAE4B5A0070EBFF /* SearchView.swift in Sources */,
 				9D9F1CD02CB038F9008DFA0C /* Popup.swift in Sources */,
+				610275C72CB179550081E6A9 /* LocationModel.swift in Sources */,
 				9D21706D2CAE9F3D005E4CCB /* locationmanager.swift in Sources */,
 				61AA39312CAE481D0070EBFF /* CreateAccountView.swift in Sources */,
 				9D21706B2CAE9E1C005E4CCB /* DirectionsView.swift in Sources */,
@@ -529,7 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = UW9295Z57Q;
+				DEVELOPMENT_TEAM = TA9TKWGKS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
@@ -548,7 +580,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SSan.relightningDonghae;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trudy.relightningDonghae;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -565,7 +597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"re_lightningDonghae/Preview Content\"";
-				DEVELOPMENT_TEAM = UW9295Z57Q;
+				DEVELOPMENT_TEAM = TA9TKWGKS3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "re-lightningDonghae-Info.plist";
@@ -584,7 +616,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Vacation.Trudy.re-lightningDonghae";
+				PRODUCT_BUNDLE_IDENTIFIER = com.trudy.relightningDonghae;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -616,6 +648,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		610275BC2CB158450081E6A9 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.12.0;
+			};
+		};
 		9D2170722CAEC354005E4CCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -627,6 +667,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		610275BD2CB158450081E6A9 /* KakaoMapsSDK-SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 610275BC2CB158450081E6A9 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = "KakaoMapsSDK-SPM";
+		};
 		9D2170742CAEC484005E4CCB /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9D2170722CAEC354005E4CCB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
