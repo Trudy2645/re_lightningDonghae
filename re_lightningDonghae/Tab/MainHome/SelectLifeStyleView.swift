@@ -124,6 +124,7 @@ class PlacesViewModel: ObservableObject {
     }
 }
 // 메인 View
+// 메인 View
 struct SelectLifeStyleView: View {
     @State private var searchText: String = "" // 사용자 입력
     @State private var responseOptions: [String] = [] // AI 응답 목록
@@ -132,13 +133,14 @@ struct SelectLifeStyleView: View {
     @State private var response: String? = nil // API 응답 저장
     @State private var isButtonHidden = false // 버튼 숨김 상태
     @StateObject var viewModel = PlacesViewModel() // ViewModel 연결
-    
+    @State private var isLoading = false // 로딩 상태를 추적하는 변수 추가
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 Text("오늘은")
                     .font(.title)
-                
+
                 HStack(spacing: 0) {
                     Text("어떤 ")
                     Text("하루")
@@ -148,58 +150,72 @@ struct SelectLifeStyleView: View {
                 }
                 .font(.title)
 
-                // 텍스트 입력 필드
-                if responseOptions.isEmpty {
-                    TextField("예: 우울해", text: $searchText)
-                        .padding(.vertical, 10)
-                        .font(.body)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(8)
-                        .padding(.trailing, 50)
-                        .padding(.vertical, 10)
-                }
-
-                // AI 제안 받기 버튼
-                if !isButtonHidden {
-                    Button(action: {
-                        fetchAIResponseForSuggestions() // 첫 번째 API 호출
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) // 키보드 숨기기
-                        isButtonHidden = true // 버튼 숨기기
-                    }) {
-                        Text("AI 제안 받기")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                // 로딩 중일 때 로딩 화면 표시
+                if isLoading {
+                    // 로딩 중일 때 ProgressView (로딩 스피너) 표시
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        ProgressView("당신의 답변을 분석중")
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .scaleEffect(1.5)
+                        Spacer()
                     }
+                    Spacer()
                 } else {
-                    // 버튼 숨김 상태에서 사용자 입력 표시
-                    Text(searchText)
-                        .font(.headline)
-                        .padding()
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(10)
-                        .padding(.vertical, 5)
-                }
+                    // 텍스트 입력 필드
+                    if responseOptions.isEmpty {
+                        TextField("   예: 우울해", text: $searchText)
+                            .padding(.vertical, 10)
+                            .font(.body)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(8)
+                            .padding(.trailing, 50)
+                            .padding(.vertical, 10)
+                    }
 
-                // AI 추천 목록 표시
-                if !responseOptions.isEmpty {
-                    Text("다음 중 선택해보세요:")
-                        .font(.headline)
-                        .padding(.top, 20)
-                    
-                    ForEach(responseOptions, id: \.self) { option in
+                    // AI 제안 받기 버튼
+                    if !isButtonHidden {
                         Button(action: {
-                            selectedOption = option
-                            fetchAIResponseForDetails(prompt: option) // 선택된 제안에 대한 두 번째 API 호출
+                            fetchAIResponseForSuggestions() // 첫 번째 API 호출
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) // 키보드 숨기기
+                            isButtonHidden = true // 버튼 숨기기
                         }) {
-                            Text(option)
+                            Text("AI 제안 받기")
+                                .font(.headline)
+                                .foregroundColor(.white)
                                 .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue.opacity(0.1))
+                                .background(Color.blue)
                                 .cornerRadius(10)
-                                .padding(.vertical, 5)
+                        }
+                    } else {
+                        // 버튼 숨김 상태에서 사용자 입력 표시
+                        Text(searchText)
+                            .font(.headline)
+                            .padding()
+                            .background(Color.blue.opacity(0.1))
+                            .cornerRadius(10)
+                            .padding(.vertical, 5)
+                    }
+
+                    // AI 추천 목록 표시
+                    if !responseOptions.isEmpty {
+                        Text("다음 중 선택해보세요:")
+                            .font(.headline)
+                            .padding(.top, 20)
+
+                        ForEach(responseOptions, id: \.self) { option in
+                            Button(action: {
+                                selectedOption = option
+                                fetchAIResponseForDetails(prompt: option) // 선택된 제안에 대한 두 번째 API 호출
+                            }) {
+                                Text(option)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.blue.opacity(0.1))
+                                    .cornerRadius(10)
+                                    .padding(.vertical, 5)
+                            }
                         }
                     }
                 }
@@ -215,69 +231,76 @@ struct SelectLifeStyleView: View {
             }
         }
     }
-    
+
     // 첫 번째 AI API 호출: 제안 받기
     private func fetchAIResponseForSuggestions() {
+        isLoading = true // 로딩 시작
         guard let url = URL(string: "http://34.22.84.70:8000/api/query/") else { return }
-        
+
         let prompt = "\(searchText) 사용자가 이런 상황이래. 이 상황을 어떤 방식으로 해결하면 좋을지 3가지만 추천해줘. 카페,체험,공원,맛집,스포츠,체육관,디저트,거리,산책,백화점등 사용자의 상황에 맞는 제안 최소 1가지 최대 4가지만 추천하는 질문으로 콤마로 구분해서 말해줘. 관련있는 것만 골라줘.존댓말로 말해줘. 예시답변은 배고플 때라고 말했을때 '근처 맛집에서 맛있는 음식을 먹어보는 건 어떠신가요?'& 디저트 카페에서 달콤한 간식을 즐겨보는 건 어떠신가요?& 백화점 푸드코트에서 다양한 음식을 골라 먹는 것도 좋은 방법입니다!우울할때는 놀이동산에 가는건 어때요? 맛난거 먹는거어때요 이런식으로 창의적으로 해.이거야 &로 정확하게 구분해줘. 5문장정도"
         let request = AIRequest(prompt: prompt)
-        
+
         guard let jsonData = try? JSONEncoder().encode(request) else { return }
-        
+
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = jsonData
-        
+
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data, error == nil else {
                 print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                isLoading = false // 로딩 종료
                 return
             }
-            
+
             do {
                 let aiResponse = try JSONDecoder().decode(AIResponse.self, from: data)
                 DispatchQueue.main.async {
                     // AI 응답을 콤마로 구분해 배열로 변환
                     self.responseOptions = aiResponse.response.split(separator: "&").map { $0.trimmingCharacters(in: .whitespaces) }
+                    self.isLoading = false // 로딩 종료
                 }
             } catch {
                 print("Decoding error: \(error)")
+                self.isLoading = false // 로딩 종료
             }
         }.resume()
     }
-    
+
     // 두 번째 AI API 호출: 선택된 제안에 맞는 장소 추천받기
     private func fetchAIResponseForDetails(prompt: String) {
-        print(prompt)
+        isLoading = true // 로딩 시작
         guard let url = URL(string: "http://34.22.84.70:8000/api/query/") else { return }
-        
+
         let request = AIRequest(prompt: "다음 제안에 맞는 장소를 추천해줘: \(prompt)지금 이런 상황인데. 구글에 특정한 단어로 검색할거야. 어떤 단어가 좋을지 하나만 말해. 단답으로 답해")
-              
+
         guard let jsonData = try? JSONEncoder().encode(request) else { return }
-        
+
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = jsonData
-        
+
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data, error == nil else {
                 print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                isLoading = false // 로딩 종료
                 return
             }
-            
+
             do {
                 let aiResponse = try JSONDecoder().decode(AIResponse.self, from: data)
                 DispatchQueue.main.async {
                     if let category = aiResponse.response.components(separatedBy: ",").first {
                         viewModel.fetchNearbyPlaces(for: category) // AI 추천 카테고리로 장소 검색
                     }
+                    self.isLoading = false // 로딩 종료
                     self.isShowingAnswerView = true
                 }
             } catch {
                 print("Decoding error: \(error)")
+                self.isLoading = false // 로딩 종료
             }
         }.resume()
     }
