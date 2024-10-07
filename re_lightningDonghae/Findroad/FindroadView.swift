@@ -91,7 +91,7 @@ struct DirectionsView: View {
 
     // Google Maps Directions API 호출
     func getDirections(from origin: String, to destination: String) {
-        let apiKey = "AIzaSyDppGeK7XZRzImgjF4olNW7Nmh5HPQ3xRc"  // 여기에 Google Maps API 키를 입력하세요.
+        let apiKey = "api키"  // 여기에 Google Maps API 키를 입력하세요.
         let urlStr = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=transit&key=\(apiKey)"
         
         guard let url = URL(string: urlStr) else {

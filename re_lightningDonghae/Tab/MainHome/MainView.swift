@@ -217,35 +217,20 @@ struct MainView: View {
                                 .padding(.leading, 10)
                                 Spacer()
                                 
-                                Button(action: {
-                                    print("dd")
-                                }, label: {
-                                    Image(systemName: "arrow.up.forward.circle.fill")
-                                        .resizable()
-                                        .frame(width: 40, height: 40)
-                                        .foregroundStyle(Color.blue)
-                                })
-                                .padding(.trailing, 30)
-                                .padding(.top, 50)
+//                                Button(action: {
+//                                    print("dd")
+//                                }, label: {
+//                                    Image(systemName: "arrow.up.forward.circle.fill")
+//                                        .resizable()
+//                                        .frame(width: 40, height: 40)
+//                                        .foregroundStyle(Color.blue)
+//                                })
+//                                .padding(.trailing, 30)
+//                                .padding(.top, 50)
                             }
                             
                         }
                         
-                        //                        NavigationLink(destination: Directions1View(spot: )) {
-                        //                            ZStack {
-                        //                                RoundedRectangle(cornerRadius: 8)
-                        //                                    .fill(Color.blue)
-//                                    .frame(width: 30, height: 30)
-//                                    .rotationEffect(Angle(degrees: 45))
-//                                
-//                                Image(systemName: "arrow.turn.up.right")
-//                                    .foregroundColor(.white)
-//                                    .font(.system(size: 14))
-//                                    .bold()
-//                            }
-//                        }
-//                        .padding(.top)
-//                            .padding(.leading, 300)
                     }
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -290,35 +275,20 @@ struct MainView: View {
                                 }
                                 .padding(.leading, 10)
                                 Spacer()
-                                Button(action: {
-                                    print("dd")
-                                }, label: {
-                                    Image(systemName: "arrow.up.forward.circle.fill")
-                                        .resizable()
-                                        .frame(width: 40, height: 40)
-                                        .foregroundStyle(Color.blue)
-                                })
-                                .padding(.trailing, 30)
-                                .padding(.top, 50)
+//                                Button(action: {
+//                                    print("dd")
+//                                }, label: {
+//                                    Image(systemName: "arrow.up.forward.circle.fill")
+//                                        .resizable()
+//                                        .frame(width: 40, height: 40)
+//                                        .foregroundStyle(Color.blue)
+//                                })
+//                                .padding(.trailing, 30)
+//                                .padding(.top, 50)
                             }
                             
                         }
                         
-//                        NavigationLink(destination: Directions1View(spot: )) {
-//                            ZStack {
-//                                RoundedRectangle(cornerRadius: 8)
-//                                    .fill(Color.blue)
-//                                    .frame(width: 30, height: 30)
-//                                    .rotationEffect(Angle(degrees: 45))
-//
-//                                Image(systemName: "arrow.turn.up.right")
-//                                    .foregroundColor(.white)
-//                                    .font(.system(size: 14))
-//                                    .bold()
-//                            }
-//                        }
-//                        .padding(.top)
-//                            .padding(.leading, 300)
                     }
                 }
                 

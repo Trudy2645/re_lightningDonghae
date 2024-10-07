@@ -206,7 +206,7 @@ struct Directions1View: View {
         let origin = "\(currentLocation?.latitude ?? 0),\(currentLocation?.longitude ?? 0)"
         let stationDestination = "\(station.latitude),\(station.longitude)"
         let spotDestination = "\(spot.latitude),\(spot.longitude)"
-        let apiKey = "AIzaSyDppGeK7XZRzImgjF4olNW7Nmh5HPQ3xRc" // Google API 키 입력
+        let apiKey = "api키" // Google API 키 입력
 
         loading = true
         

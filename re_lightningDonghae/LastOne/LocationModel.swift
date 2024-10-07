@@ -35,7 +35,7 @@
 //    @Published var touristSpots: [TouristSpot] = []
 //    
 //    func fetchNearbyPlaces() {
-//        let apiKey = "AIzaSyDppGeK7XZRzImgjF4olNW7Nmh5HPQ3xRc" // 여기에 API 키를 입력하세요.
+//        let apiKey = "api키" // 여기에 API 키를 입력하세요.
 //        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=35.164071,129.060462&radius=500&keyword=카페&key=\(apiKey)"
 //        
 //        guard let url = URL(string: urlString) else { return }
