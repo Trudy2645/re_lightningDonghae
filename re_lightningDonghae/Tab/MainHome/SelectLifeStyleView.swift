@@ -82,7 +82,7 @@ class PlacesViewModel: ObservableObject {
             SubwayStation(name: "태화강역 동해선", latitude: 35.538669, longitude:129.349169),
         ]
         
-        let apiKey = "AIzaSyDppGeK7XZRzImgjF4olNW7Nmh5HPQ3xRc" // 여기에 Google Places API 키를 입력
+        let apiKey = "api키" // 여기에 Google Places API 키를 입력
         
         for station in subwayStations {
             let location = "\(station.latitude),\(station.longitude)"
